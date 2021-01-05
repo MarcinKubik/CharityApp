@@ -42,8 +42,7 @@
 <section class="stats">
     <div class="container container--85">
         <div class="stats--item">
-                <em><c:out value="${allDonations}"/></em>
-            <%--<em>13</em>--%>
+                <em><c:out value="${bags}"/></em>
 
             <h3>Oddanych worków</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum
@@ -51,7 +50,7 @@
         </div>
 
         <div class="stats--item">
-            <em>5</em>
+            <em><c:out value="${allDonations}"/></em>
             <h3>Przekazanych darów</h3>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate quas
                 quam.</p>

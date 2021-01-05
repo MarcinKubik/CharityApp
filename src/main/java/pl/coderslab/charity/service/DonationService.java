@@ -37,7 +37,12 @@ public class DonationService {
         donationRepository.deleteById(id);
     }
 
-    public Integer countAllDonations(){
-        return donationRepository.countByQuantity();
+    public Integer countBags(){
+        return donationRepository.countBags();
     }
+
+    public Integer AllDonations(){
+        return donationRepository.countAllDonations();
+    }
+
 }

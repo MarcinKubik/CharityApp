@@ -36,4 +36,8 @@ public class DonationService {
     public void delete(Long id){
         donationRepository.deleteById(id);
     }
+
+    public Integer countAllDonations(){
+        return donationRepository.countByQuantity();
+    }
 }

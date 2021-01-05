@@ -35,4 +35,8 @@ public class InstitutionService {
     public void delete(Long id){
         institutionRepository.deleteById(id);
     }
+
+    public List<Institution> find4Institutions(){
+        return institutionRepository.findFirst4ByOrderByIdAsc();
+    }
 }

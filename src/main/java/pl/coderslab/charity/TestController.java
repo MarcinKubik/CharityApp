@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class TestController {
 
-    @GetMapping("/form")
+   /* @GetMapping("/form")
     public String form(){
         return "form";
     }
@@ -24,5 +24,5 @@ public class TestController {
     @GetMapping("/register")
     public String register(){
         return "register";
-    }
+    }*/
 }

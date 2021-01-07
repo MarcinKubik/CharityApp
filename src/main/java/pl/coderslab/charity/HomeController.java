@@ -24,7 +24,7 @@ public class HomeController {
     public String homeAction(Model model){
         List<Institution> institutions = institutionService.find4Institutions();
         Integer bags = donationService.countBags();
-        Integer allDonations = donationService.AllDonations();
+        long allDonations = donationService.AllDonations();
         model.addAttribute("bags", bags);
         model.addAttribute("allDonations", allDonations);
         model.addAttribute("institutions", institutions);

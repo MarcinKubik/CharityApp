@@ -41,8 +41,8 @@ public class DonationService {
         return donationRepository.countBags();
     }
 
-    public Integer AllDonations(){
-        return donationRepository.countAllDonations();
+    public long AllDonations(){
+        return donationRepository.count();
     }
 
 }

@@ -5,16 +5,10 @@ import org.springframework.data.jpa.repository.Query;
 import pl.coderslab.charity.entity.Donation;
 
 public interface DonationRepository extends JpaRepository<Donation, Long> {
-    @Query(value = "SELECT sum(quantity) FROM donations", nativeQuery = true)
+    @Query("SELECT sum(d.quantity) FROM Donation d")
     Integer countBags();
-    @Query(value = "SELECT count(*) FROM donations", nativeQuery = true)
-    Integer countAllDonations();
+    /*@Query(value = "SELECT count(*) FROM donations", nativeQuery = true)
+    Integer countAllDonations();*/
+    long count();
+
 }
-
-/*public interface UserRepository extends JpaRepository<User, Long> {
-
-    @Query(value = "SELECT * FROM USERS WHERE LASTNAME = ?1",
-            countQuery = "SELECT count(*) FROM USERS WHERE LASTNAME = ?1",
-            nativeQuery = true)
-    Page<User> findByLastname(String lastname, Pageable pageable);
-}*/

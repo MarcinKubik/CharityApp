@@ -93,10 +93,10 @@
         <h2>O nas</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas vitae animi rem pariatur incidunt libero
             optio esse quisquam illo omnis.</p>
-        <img src="<c:url value="../../resources/images/signature.svg"/>" class="about-us--text-signature"
+        <img src="<c:url value="resources/images/signature.svg"/>" class="about-us--text-signature"
              alt="Signature"/>
     </div>
-    <div class="about-us--image"><img src="<c:url value="../../resources/images/about-us.jpg"/>"
+    <div class="about-us--image"><img src="<c:url value="resources/images/about-us.jpg"/>"
                                       alt="People in circle"/>
     </div>
 </section>
@@ -195,14 +195,14 @@
         <span class="bottom-line--copy">Copyright &copy; 2018</span>
         <div class="bottom-line--icons">
             <a href="#" class="btn btn--small"><img
-                    src="<c:url value="../../resources/images/icon-facebook.svg"/>"/></a> <a href="#"
+                    src="<c:url value="resources/images/icon-facebook.svg"/>"/></a> <a href="#"
                                                                                              class="btn btn--small">
-            <img src="<c:url value="../../resources/images/icon-instagram.svg"/>"/></a>
+            <img src="<c:url value="resources/images/icon-instagram.svg"/>"/></a>
         </div>
     </div>
 </footer>
 
-<script src="<c:url value="../../resources/js/app.js"/>"></script>
-<script src="<c:url value="../../resources/js/slider.js"/>"></script>
+<script src="<c:url value="resources/js/app.js"/>"></script>
+<script src="<c:url value="resources/js/slider.js"/>"></script>
 </body>
 </html>

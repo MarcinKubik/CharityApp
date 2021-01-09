@@ -42,7 +42,7 @@
 <section class="stats">
     <div class="container container--85">
         <div class="stats--item">
-                <em><c:out value="${bags}"/></em>
+            <em><c:out value="${bags}"/></em>
 
             <h3>Oddanych worków</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum
@@ -110,69 +110,22 @@
             Możesz sprawdzić czym się zajmują.</p>
 
         <ul class="help--slides-items">
-            <c:set var="continueExecuting" value="true"/>
             <c:forEach items="${institutions}" var="institution" varStatus="i">
-            <c:if test="${continueExecuting}">
-                <li>
-                    <div class="col">
-                        <c:set var="institutionIteration" value="${i.index}"/>
-                        <div class="title">Fundacja "${institutions[institutionIteration].name}"</div>
-                        <div class="subtitle">Cel i misja: ${institutions[institutionIteration].description}</div>
-                    </div>
-
-                    <div class="col">
-                        <c:set var="institutionIteration" value="${i.index+1}"/>
-                        <div class="title">Fundacja "${institutions[institutionIteration].name}"</div>
-                        <div class="subtitle">Cel i misja: ${institutions[institutionIteration].description}</div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="col">
-                        <c:set var="institutionIteration" value="${i.index+2}"/>
-                        <div class="title">Fundacja "${institutions[institutionIteration].name}"</div>
-                        <div class="subtitle">Cel i misja: ${institutions[institutionIteration].description}</div>
-                    </div>
-                    <div class="col">
-                        <c:set var="institutionIteration" value="${i.index+3}"/>
-                        <div class="title">Fundacja "${institutions[institutionIteration].name}"</div>
-                        <div class="subtitle">Cel i misja: ${institutions[institutionIteration].description}</div>
-                        <c:set var="continueExecuting" value="false"/>
-                    </div>
-
-                </li>
-            </c:if>
-
+                <c:if test="${i.index mod 2 == 0}">
+                    <li>
+                </c:if>
+                <div class="col">
+                    <div class="title">Fundacja "${institution.name}"</div>
+                    <div class="subtitle">Cel i misja: ${institution.description}</div>
+                </div>
+                <c:if test="${i.index mod 2 == 1 or i.last}">
+                    </li>
+                </c:if>
             </c:forEach>
             <div class="help--slides-pagination">
                 <button type="button" id="prev" class="btn prev-step">&#x3C;</button>
                 <button type="button" id="next" class="btn next-step">&#x3E;</button>
             </div>
-
-       <%--     <li>
-                <div class="col">
-                    <div class="title">Fundacja "Dbam o Zdrowie"</div>
-                    <div class="subtitle">Cel i misja: Pomoc dzieciom z ubogich rodzin.</div>
-                </div>
-
-                <div class="col">
-                    <div class="title">Fundacja "A kogo"</div>
-                    <div class="subtitle">Cel i misja: Pomoc wybudzaniu dzieci ze śpiączki.</div>
-                </div>
-            </li>
-
-            <li>
-                <div class="col">
-                    <div class="title">Fundacja “Dla dzieci"</div>
-                    <div class="subtitle">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.</div>
-                </div>
-                <div class="col">
-                    <div class="title">Fundacja “Bez domu”</div>
-                    <div class="subtitle">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania</div>
-                </div>
-
-            </li>--%>
-
         </ul>
     </div>
 
@@ -196,7 +149,7 @@
         <div class="bottom-line--icons">
             <a href="#" class="btn btn--small"><img
                     src="<c:url value="resources/images/icon-facebook.svg"/>"/></a> <a href="#"
-                                                                                             class="btn btn--small">
+                                                                                       class="btn btn--small">
             <img src="<c:url value="resources/images/icon-instagram.svg"/>"/></a>
         </div>
     </div>

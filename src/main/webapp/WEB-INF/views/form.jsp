@@ -94,11 +94,17 @@
 
                 <c:forEach items="${categories}" var="category">
                     <div class="form-group form-group--checkbox">
-                        <form:label path="categories">
+                            <%-- <form:label path="categories">
+                                 <span class="checkbox"></span>
+                                 <span class="description">${category.name}</span>
+                             </form:label>--%>
+                        <label>
+                            <form:checkbox path="categories" value="${category.id}"/>
+                                <%--dodać 2 spany--%>
                             <span class="checkbox"></span>
-                            <span class="description">${category.name}</span>
-                        </form:label>
-                        <form:checkbox path="categories" value="${category.id}"/>
+                            <span class="description">${category.name}</span
+                        </label>
+
                     </div>
                 </c:forEach>
                 <div class="form-group form-group--buttons">
@@ -116,7 +122,8 @@
                             <input type="number" name="bags" step="1" min="1" />
                         </label>--%>
                     <form:label path="quantity">Liczba 60l worków</form:label>
-                    <form:input path="quantity"/>  <%-- Nie ma atrybutu number, trzeba sparsować i dopiero hasErrors--%>
+                    <form:input path="quantity"/> <%-- Nie ma atrybutu number, trzeba sparsować i dopiero hasErrors--%>
+
                 </div>
 
                 <div class="form-group form-group--buttons">
@@ -132,8 +139,9 @@
 
                 <c:forEach items="${institutions}" var="institution">
                     <div class="form-group form-group--checkbox">
-                        <form:label path="institution">
-                            <%--<input type="radio" name="organization" value="old" />--%>
+                        <label>
+                                <form:radiobutton path="institution" value="${institution.id}"/>
+                                <%--<input type="radio" name="organization" value="old" />--%>
                             <span class="checkbox radio"></span>
                             <span class="description">
                   <div class="title">Fundacja “${institution.name}”</div>
@@ -141,8 +149,8 @@
                     Cel i misja: ${institution.description}
                   </div>
                 </span>
-                        </form:label>
-                        <form:radiobutton path="institution" value="${institution.id}"/>
+                            <label>
+
                     </div>
                 </c:forEach>
 

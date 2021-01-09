@@ -22,7 +22,7 @@ public class HomeController {
 
     @RequestMapping("/")
     public String homeAction(Model model){
-        List<Institution> institutions = institutionService.find4Institutions();
+        List<Institution> institutions = institutionService.getInstitutions();
         Integer bags = donationService.countBags();
         long allDonations = donationService.AllDonations();
         model.addAttribute("bags", bags);

@@ -9,6 +9,6 @@ public interface DonationRepository extends JpaRepository<Donation, Long> {
     Integer countBags();
     /*@Query(value = "SELECT count(*) FROM donations", nativeQuery = true)
     Integer countAllDonations();*/
-    long count();
+   /* long count();*/  //jest w CrudRepository
 
 }

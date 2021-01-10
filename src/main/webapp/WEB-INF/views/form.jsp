@@ -187,6 +187,11 @@
                             <form:input path="zipCode"/>
                         </div>
 
+                        <div class="form-group form-group--inline">
+                            <form:label path="phoneNumber">Numer telefonu</form:label>
+                            <form:input path="phoneNumber"/>
+                        </div>
+
                             <%--  <div class="form-group form-group--inline">
                                   <label>
                                       Numer telefonu <input type="phone" name="phone" />

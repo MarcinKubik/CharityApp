@@ -152,6 +152,24 @@ document.addEventListener("DOMContentLoaded", function () {
             this.$step.innerText = this.currentStep;
 
             // TODO: Validation
+            let step1 = this.$form.querySelector('div[data-step="1"]');
+            let button1 = step1.lastElementChild.firstElementChild;
+            button1.addEventListener("click", evt => {
+                let categoriesFromForm = this.$form.querySelectorAll('[type="checkbox"]:checked');
+
+                let label1 = step1.lastElementChild.previousElementSibling.firstElementChild;
+                if (categoriesFromForm.length === 0) {
+                    if (label1.lastElementChild.innerText === "Musisz wybrać co najmniej jedną kategorię") {
+                        label1.removeChild(label1.lastElementChild);
+                    }
+                    let statement = document.createElement("span");
+                    statement.classList.add("description");
+                    statement.innerText = "Musisz wybrać co najmniej jedną kategorię";
+                    label1.appendChild(statement);
+                }
+
+            });
+
 
             this.slides.forEach(slide => {
                 slide.classList.remove("active");
@@ -196,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 //giving values for checkboses and radio
 
-                categoriesFromForm.forEach(cat =>{
+                categoriesFromForm.forEach(cat => {
                     categoriesSummary += " " + cat.nextElementSibling.nextElementSibling.nextElementSibling.innerText;
                 });
                 fundationSummary = fundationFromForm.nextElementSibling.nextElementSibling.firstElementChild.innerText.substr(8);

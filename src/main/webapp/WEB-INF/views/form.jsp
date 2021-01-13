@@ -122,7 +122,7 @@
                             <input type="number" name="bags" step="1" min="1" />
                         </label>--%>
                     <form:label path="quantity">Liczba 60l worków</form:label>
-                    <form:input path="quantity"/> <%-- Nie ma atrybutu number, trzeba sparsować i dopiero hasErrors--%>
+                    <form:input type="number" min="1" step="1" path="quantity"/> <%-- Nie ma atrybutu number, trzeba sparsować i dopiero hasErrors--%>
 
                 </div>
 
@@ -149,7 +149,7 @@
                     Cel i misja: ${institution.description}
                   </div>
                 </span>
-                            <label>
+                            </label>
 
                     </div>
                 </c:forEach>

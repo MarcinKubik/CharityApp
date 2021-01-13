@@ -105,6 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             this.$stepInstructions = form.querySelectorAll(".form--steps-instructions p");
             const $stepForms = form.querySelectorAll("form > div");
+
             this.slides = [...this.$stepInstructions, ...$stepForms];
 
             this.init();
@@ -126,8 +127,10 @@ document.addEventListener("DOMContentLoaded", function () {
             this.$next.forEach(btn => {
                 btn.addEventListener("click", e => {
                     e.preventDefault();
-                    this.currentStep++;
-                    this.updateForm();
+                    if (this.validateForm()) {
+                        this.currentStep++;
+                        this.updateForm();
+                    }
                 });
             });
 
@@ -152,24 +155,6 @@ document.addEventListener("DOMContentLoaded", function () {
             this.$step.innerText = this.currentStep;
 
             // TODO: Validation
-            let step1 = this.$form.querySelector('div[data-step="1"]');
-            let button1 = step1.lastElementChild.firstElementChild;
-            button1.addEventListener("click", evt => {
-                let categoriesFromForm = this.$form.querySelectorAll('[type="checkbox"]:checked');
-
-                let label1 = step1.lastElementChild.previousElementSibling.firstElementChild;
-                if (categoriesFromForm.length === 0) {
-                    if (label1.lastElementChild.innerText === "Musisz wybrać co najmniej jedną kategorię") {
-                        label1.removeChild(label1.lastElementChild);
-                    }
-                    let statement = document.createElement("span");
-                    statement.classList.add("description");
-                    statement.innerText = "Musisz wybrać co najmniej jedną kategorię";
-                    label1.appendChild(statement);
-                }
-
-            });
-
 
             this.slides.forEach(slide => {
                 slide.classList.remove("active");
@@ -232,6 +217,61 @@ document.addEventListener("DOMContentLoaded", function () {
 
             }
         }
+
+        validateForm() {
+            if (this.currentStep === 1) {
+                let categoriesFromForm = this.$form.querySelectorAll('[type="checkbox"]:checked');
+                if (categoriesFromForm.length === 0) {
+                    alert("Musisz wybrać co najmniej jedną kategorię");
+                    return false;
+                }
+            }
+
+            if (this.currentStep === 2) {
+                let quantity = this.$form.querySelector("#quantity");
+                if (quantity.value <= 0 || (quantity.value % 1 !== 0)) { //Number.isInteger(quantity.value) daje błędny wynik, dlaczego?
+                    console.log(quantity.value);
+                    alert("Musisz podać całkowitą liczbę worków większą od 0");
+                    return false;
+                }
+            }
+
+            if (this.currentStep === 3) {
+                let radioButton = this.$form.querySelector('[type="radio"]:checked');
+                if(radioButton == null){
+                    alert("Musisz wybrać fundację");
+                    return false;
+                }
+            }
+
+            if (this.currentStep === 4) {
+                let street = this.$form.querySelector("#street");
+                if(street.value === ""){
+                    alert("Musisz podać poprawną nazwę ulicy");
+                    return false
+                }
+                console.log(street);
+
+                let city = this.$form.querySelector("#city");
+                let cityRegex = new RegExp("[A-ZÓŹŻĆŁŚ]{1}[a-zóżźćąęłśń]{2,}");
+                if(city.value === "" || !cityRegex.test(city.value)){
+                    alert("Musisz podać poprawną nazwę miasta");
+                    return false
+                }
+                console.log(city)
+
+                let zipCode = this.$form.querySelector("#zipCode");
+                let phoneNumber = this.$form.querySelector("#phoneNumber");
+                let pickUpDate = this.$form.querySelector("#pickUpDate");
+                let pickUpTime = this.$form.querySelector("#pickUpTime");
+                let pickUpComment = this.$form.querySelector("#pickUpComment");
+
+
+            }
+
+            return true;
+        }
+
 
     }
 

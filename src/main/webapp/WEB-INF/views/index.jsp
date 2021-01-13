@@ -118,15 +118,25 @@
                     <div class="title">Fundacja "${institution.name}"</div>
                     <div class="subtitle">Cel i misja: ${institution.description}</div>
                 </div>
-                <c:if test="${i.index mod 2 == 1 or i.last}">
+                <%--<c:if test="${i.index mod 2 == 1 or i.last}">
+                    </li>
+                </c:if>--%>
+                <c:if test="${i.index mod 2 == 1}">
+                    </li>
+                </c:if>
+                <c:if test="${i.index mod 2 == 0 and i.last}">
+                    <div class="col" style="visibility: hidden">
+
+                    </div>
                     </li>
                 </c:if>
             </c:forEach>
-            <div class="help--slides-pagination">
-                <button type="button" id="prev" class="btn prev-step">&#x3C;</button>
-                <button type="button" id="next" class="btn next-step">&#x3E;</button>
-            </div>
+          <%-- dopisac pustego diva  class column i visibility hidden--%>
         </ul>
+        <div class="help--slides-pagination">
+            <button type="button" id="prev" class="btn prev-step">&#x3C;</button>
+            <button type="button" id="next" class="btn next-step">&#x3E;</button>
+        </div>
     </div>
 
 </section>

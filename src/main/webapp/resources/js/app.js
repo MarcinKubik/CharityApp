@@ -246,7 +246,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (this.currentStep === 4) {
                 let street = this.$form.querySelector("#street");
-                if(street.value === ""){
+                let streetRegex = new RegExp("[A-ZÓŹŻĆŁŚ]{1}[a-zóżźćąęłśń]{2,}");
+                if(street.value === "" || !streetRegex.test(street.value)){
                     alert("Musisz podać poprawną nazwę ulicy");
                     return false
                 }
@@ -261,11 +262,38 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log(city)
 
                 let zipCode = this.$form.querySelector("#zipCode");
-                let phoneNumber = this.$form.querySelector("#phoneNumber");
-                let pickUpDate = this.$form.querySelector("#pickUpDate");
-                let pickUpTime = this.$form.querySelector("#pickUpTime");
-                let pickUpComment = this.$form.querySelector("#pickUpComment");
+                let zipCodeRegex = new RegExp("^\\d{2}-\\d{3}$");
+                if(zipCodeRegex.value === "" || !zipCodeRegex.test(zipCode.value)){
+                    alert("Musisz podać poprawny kod pocztowy");
+                    return false;
+                }
 
+                let phoneNumber = this.$form.querySelector("#phoneNumber");
+                let phoneNumberRegex = new RegExp("^\\d{9}$");
+                if(phoneNumber.value === "" || !phoneNumberRegex.test(phoneNumber.value)){
+                    alert("Musisz podać dziewięciocyfrowy numer telefonu");
+                    return false;
+                }
+
+                let pickUpDate = this.$form.querySelector("#pickUpDate");
+                //let dateReg =
+                   // new RegExp("2{1}0{1}[2-9]{1}[1-9]{1}-(0{1}[1-9]{1})|(1{1}[1-2]{1})-(0{1}[1-9]{1})|(1{1}[0-9]{1})|(2{1}[0-9]{1})|(3{1}[0-1]{1})");
+                new RegExp("([2]{1}[0]{1}[2-9]{1}[1-9]{1})-([0]{1}[1-9]{1}|[1]{1}[1-2]{1})-([0]{1}[1-9]{1})|([1]{1}[0-9]{1})|([2]{1}[0-9]{1})|([3]{1}[0-1]{1})");
+                let dateReg = new RegExp("^\\d{4}-\\d{2}-\\d{2}$");
+                if(pickUpDate.value === "" || !dateReg.test(pickUpDate.value)){
+                    console.log("data " + pickUpDate.value);
+                    alert("Musisz podać datę");
+                    return false;
+                }
+                console.log("data " + pickUpDate.value);
+                let pickUpTime = this.$form.querySelector("#pickUpTime");
+                let timeReg = new RegExp("^\\d{2}:\\d{2}$");
+                if(pickUpTime.value === "" || !timeReg.test(pickUpTime.value)){
+                    console.log("data " + pickUpDate.value);
+                    alert("Musisz podać godzinę");
+                    return false;
+                }
+                console.log("czas " + pickUpTime.value);
 
             }
 

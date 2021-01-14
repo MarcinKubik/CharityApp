@@ -49,9 +49,9 @@ public class DonationController {
     public String processForm(@Valid Donation donation, BindingResult result){
         if(result.hasErrors()){
             return "form";
-        }else {
+        }
             donationService.save(donation);
             return "form-confirmation";
-        }
+
     }
 }

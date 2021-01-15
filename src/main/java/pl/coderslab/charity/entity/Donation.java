@@ -44,7 +44,6 @@ public class Donation {
     private LocalTime pickUpTime;
     @NotEmpty
     private String pickUpComment;
-    //telefon
     @NotNull
     private String phoneNumber;
 }

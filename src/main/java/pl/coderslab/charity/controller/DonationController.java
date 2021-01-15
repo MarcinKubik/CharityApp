@@ -45,7 +45,7 @@ public class DonationController {
         return "form";
     }
 
-    @PostMapping("form")
+    @PostMapping("/form")
     public String processForm(@Valid Donation donation, BindingResult result){
         if(result.hasErrors()){
             return "form";

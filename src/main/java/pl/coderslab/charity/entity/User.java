@@ -33,8 +33,8 @@ public class User {
     @NotNull
     @Transient
     @Pattern(regexp = "\\S{8,}", message = "Hasło musi zawierać co najmniej 8 znaków")
-
     private String password2;
+    private int enabled;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),

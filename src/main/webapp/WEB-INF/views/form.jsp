@@ -22,7 +22,13 @@
                 <ul class="dropdown">
                     <li><a href="#">Profil</a></li>
                     <li><a href="#">Moje zbiórki</a></li>
-                    <li><a href="#">Wyloguj</a></li>
+                    <%--<li><a href="#">Wyloguj</a></li>--%>
+                    <li>
+                        <form action="/logout" method="post">
+                        <input class="fa fa-id-badge" type="submit" value="Wyloguj">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    </form>
+                    </li>
                 </ul>
             </li>
         </ul>

@@ -6,17 +6,23 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import pl.coderslab.charity.entity.Role;
 import pl.coderslab.charity.entity.User;
+import pl.coderslab.charity.service.RoleService;
 import pl.coderslab.charity.service.UserService;
 
 import javax.validation.Valid;
+import java.util.HashSet;
+import java.util.Set;
 
 @Controller
 public class UserController {
     private final UserService userService;
+    private final RoleService roleService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, RoleService roleService) {
         this.userService = userService;
+        this.roleService = roleService;
     }
 
     @GetMapping("/register")
@@ -37,4 +43,5 @@ public class UserController {
         userService.save(user);
         return "index";
     }
+
 }

@@ -6,6 +6,7 @@ import pl.coderslab.charity.repository.RoleRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class RoleService {
@@ -35,5 +36,9 @@ public class RoleService {
 
     public void delete(Long id){
         roleRepository.deleteById(id);
+    }
+
+    public Role findByName(String name){
+        return roleRepository.findByName(name);
     }
 }

@@ -35,12 +35,26 @@ public class UserService implements UserServiceInterface {
         return optionalUser;
     }
 
+    @Override
     public void save(User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setEnabled(1);
         Role userRole = roleRepository.findByName("ROLE_USER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
+    }
+
+    public void createFirstAdmin(){
+        User admin = new User();
+        admin.setName("Marcin");
+        admin.setSurname("Kubik");
+        admin.setEnabled(1);
+        admin.setEmail("aaa@gmail.com");
+        admin.setPassword(passwordEncoder.encode("haslo111"));
+        admin.setPassword2("haslo111");
+        Role adminRole = roleRepository.findByName("ROLE_ADMIN");
+        admin.setRoles(new HashSet<Role>(Arrays.asList(adminRole)));
+        userRepository.save(admin);
     }
 
     public void update(User user){
@@ -54,5 +68,9 @@ public class UserService implements UserServiceInterface {
     @Override
     public User findByEmail(String email){
         return userRepository.findByEmail(email);
+    }
+
+    public boolean existsByEmail(String email){
+        return userRepository.existsByEmail(email);
     }
 }

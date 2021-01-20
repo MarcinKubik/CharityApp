@@ -5,9 +5,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.entity.Institution;
 import pl.coderslab.charity.entity.Role;
+import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.InstitutionService;
 import pl.coderslab.charity.service.RoleService;
+import pl.coderslab.charity.service.UserService;
 
 import java.util.List;
 
@@ -18,10 +20,12 @@ public class HomeController {
     private final InstitutionService institutionService;
     private final DonationService donationService;
     private final RoleService roleService;
-    public HomeController(InstitutionService institutionService, DonationService donationService, RoleService roleService) {
+    private final UserService userService;
+    public HomeController(InstitutionService institutionService, DonationService donationService, RoleService roleService, UserService userService) {
         this.institutionService = institutionService;
         this.donationService = donationService;
         this.roleService = roleService;
+        this.userService = userService;
     }
 
     @RequestMapping("/")
@@ -37,6 +41,11 @@ public class HomeController {
             roleUser.setName("ROLE_USER");
             roleService.save(roleAdmin);
             roleService.save(roleUser);
+        }
+
+        List<User> users = userService.getUsers();
+        if(users.size() == 0){
+            userService.createFirstAdmin();
         }
         List<Institution> institutions = institutionService.getInstitutions();
         Integer bags = donationService.countBags();

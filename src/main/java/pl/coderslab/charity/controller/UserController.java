@@ -36,9 +36,14 @@ public class UserController {
 
     @PostMapping("/register")
     public String processRegisterForm(@Valid User user, BindingResult result){
-        if(!user.getPassword2().equals(user.getPassword())){
-            FieldError error = new FieldError("user", "password2", "Hasła nie są takie same");
-            result.addError(error);
+      //przy mailu skorzystac z existsByEmail
+        if(userService.existsByEmail(user.getEmail())){
+            result.rejectValue("email","Email już istnieje w bazie danych", "Email już istnieje w bazie danych");
+        }
+        if(user.getPassword2() != null && !user.getPassword2().equals(user.getPassword())){
+            result.rejectValue("password2", "Hasła nie są takie same", "Hasła nie są takie same");
+            /*FieldError error = new FieldError("user", "password2", "Hasła nie są takie same");
+            result.addError(error);*/
         }
         if(result.hasErrors()){
             return "register";

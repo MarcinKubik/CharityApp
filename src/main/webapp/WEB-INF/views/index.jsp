@@ -51,6 +51,7 @@
 
         <div class="stats--item">
             <em><c:out value="${allDonations}"/></em>
+
             <h3>Przekazanych darów</h3>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate quas
                 quam.</p>
@@ -117,6 +118,9 @@
                 <div class="col">
                     <div class="title">Fundacja "${institution.name}"</div>
                     <div class="subtitle">Cel i misja: ${institution.description}</div>
+                    <c:if test="">
+
+                    </c:if>
                 </div>
                 <%--<c:if test="${i.index mod 2 == 1 or i.last}">
                     </li>

@@ -29,4 +29,4 @@ in good condition, to institutions which are responsible for passed this stuff t
 - Operations on institutions: creating, reading, updating, deleting
 
 ## Tasks in progress:
-- - Operations on admins: creating, reading, updating, deleting
+- Operations on admins: creating, reading, updating, deleting

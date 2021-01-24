@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.entity.Role;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.service.CurrentUser;
@@ -19,6 +20,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Controller
+@RequestMapping("/users")
 public class UserController {
     private final UserService userService;
     private final RoleService roleService;

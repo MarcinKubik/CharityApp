@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form"
+           uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Dodaj Fundację</title>
 
     <!-- Custom fonts for this template-->
     <link href="../../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -146,8 +148,10 @@
 
         <!-- Sidebar Message -->
         <div class="sidebar-card">
-            <img class="sidebar-card-illustration mb-2"  src="<c:url value="../../resources/img/undraw_rocket.svg"/>" alt="">
-            <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
+            <img class="sidebar-card-illustration mb-2" src="<c:url value="../../resources/img/undraw_rocket.svg"/>"
+                 alt="">
+            <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and
+                more!</p>
             <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
         </div>
 
@@ -276,37 +280,43 @@
                             </h6>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="<c:url value="../../resources/img/undraw_profile_1.svg"/>"
+                                    <img class="rounded-circle"
+                                         src="<c:url value="../../resources/img/undraw_profile_1.svg"/>"
                                          alt="">
                                     <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div class="font-weight-bold">
                                     <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                        problem I've been having.</div>
+                                        problem I've been having.
+                                    </div>
                                     <div class="small text-gray-500">Emily Fowler · 58m</div>
                                 </div>
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="<c:url value="../../resources/img/undraw_profile_2.svg"/>"
+                                    <img class="rounded-circle"
+                                         src="<c:url value="../../resources/img/undraw_profile_2.svg"/>"
                                          alt="">
                                     <div class="status-indicator"></div>
                                 </div>
                                 <div>
                                     <div class="text-truncate">I have the photos that you ordered last month, how
-                                        would you like them sent to you?</div>
+                                        would you like them sent to you?
+                                    </div>
                                     <div class="small text-gray-500">Jae Chun · 1d</div>
                                 </div>
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="<c:url value="../../resources/img/undraw_profile_3.svg"/>"
+                                    <img class="rounded-circle"
+                                         src="<c:url value="../../resources/img/undraw_profile_3.svg"/>"
                                          alt="">
                                     <div class="status-indicator bg-warning"></div>
                                 </div>
                                 <div>
                                     <div class="text-truncate">Last month's report looks great, I am very happy with
-                                        the progress so far, keep up the good work!</div>
+                                        the progress so far, keep up the good work!
+                                    </div>
                                     <div class="small text-gray-500">Morgan Alvarez · 2d</div>
                                 </div>
                             </a>
@@ -318,7 +328,8 @@
                                 </div>
                                 <div>
                                     <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                        told me that people say this to all dogs, even if they aren't good...</div>
+                                        told me that people say this to all dogs, even if they aren't good...
+                                    </div>
                                     <div class="small text-gray-500">Chicken the Dog · 2w</div>
                                 </div>
                             </a>
@@ -393,37 +404,48 @@
                     <div class="col-lg-6 mb-4">
 
                         <!-- Illustrations -->
-                       <%-- <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
-                            </div>
-                            <div class="card-body">
-                               &lt;%&ndash; <div class="text-center">
-                                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                         src="<c:url value="resources/img/undraw_posting_photo.svg"/>" alt="">
-                                </div>&ndash;%&gt;
-                                <p>Add some quality, svg illustrations to your project courtesy of <a
-                                        target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
-                                    constantly updated collection of beautiful svg images that you can use
-                                    completely free and without attribution!</p>
-                                <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
-                                    unDraw &rarr;</a>
-                            </div>
-                        </div>--%>
+                        <%-- <div class="card shadow mb-4">
+                             <div class="card-header py-3">
+                                 <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                             </div>
+                             <div class="card-body">
+                                &lt;%&ndash; <div class="text-center">
+                                     <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                                          src="<c:url value="resources/img/undraw_posting_photo.svg"/>" alt="">
+                                 </div>&ndash;%&gt;
+                                 <p>Add some quality, svg illustrations to your project courtesy of <a
+                                         target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
+                                     constantly updated collection of beautiful svg images that you can use
+                                     completely free and without attribution!</p>
+                                 <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
+                                     unDraw &rarr;</a>
+                             </div>
+                         </div>--%>
 
                         <!-- Approach -->
-                        <%--<div class="card shadow mb-4">
+                        <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
                             </div>
                             <div class="card-body">
-                                <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
-                                    CSS bloat and poor page performance. Custom CSS classes are used to create
-                                    custom components and custom utility classes.</p>
-                                <p class="mb-0">Before working with this theme, you should become familiar with the
-                                    Bootstrap framework, especially the utility classes.</p>
+                                <form:form modelAttribute="institution" method="post" action="/institutions/add">
+                                    <div>
+                                        <form:hidden path="id"/>
+                                        <div>
+                                            <form:input path="name"/>
+                                            <form:label path="name">Nazwa</form:label>
+                                            <form:errors path="name"/>
+                                        </div>
+                                        <div>
+                                            <form:textarea path="description" rows="3"/>
+                                            <form:label path="description">Opis</form:label>
+                                            <form:errors path="description"/>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn-facebook">Zapisz dane</button>
+                                </form:form>
                             </div>
-                        </div>--%>
+                        </div>
 
                     </div>
                 </div>
@@ -480,23 +502,17 @@
 </div>
 
 <!-- Bootstrap core JavaScript-->
-<%--<script src="resources/vendor/jquery/jquery.min.js"></script>
-<script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>--%>
 <script src="<c:url value="../../resources/vendor/jquery/jquery.min.js"/>"></script>
 <script src="<c:url value="../../resources/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
 
 <!-- Core plugin JavaScript-->
-<%--<script src="resources/vendor/jquery-easing/jquery.easing.min.js"></script>--%>
 <script src="<c:url value="../../resources/vendor/jquery-easing/jquery.easing.min.js"/>"></script>
 <!-- Custom scripts for all pages-->
-<%--<script src="resources/js/sb-admin-2.min.js"></script>--%>
 <script src="<c:url value="../../resources/js/sb-admin-2.min.js"/>"></script>
 <!-- Page level plugins -->
-<%--<script src="resources/vendor/chart.js/Chart.min.js"></script>--%>
 <script src="<c:url value="../../resources/vendor/chart.js/Chart.min.js"/>"></script>
 <!-- Page level custom scripts -->
-<%--<script src="resources/js/demo/chart-area-demo.js"></script>
-<script src="resources/js/demo/chart-pie-demo.js"></script>--%>
+
 <script src="<c:url value="../../resources/js/demo/chart-area-demo.js"/>"></script>
 <script src="<c:url value="../../resources/js/demo/chart-pie-demo.js"/>"></script>
 </body>

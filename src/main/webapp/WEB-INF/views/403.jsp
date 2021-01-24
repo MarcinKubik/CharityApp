@@ -5,5 +5,6 @@
 </head>
 <body>
 <p>Brak uprawnień</p>
+<p><a href="/">Powrót na stronę główną</a> </p>
 </body>
 </html>

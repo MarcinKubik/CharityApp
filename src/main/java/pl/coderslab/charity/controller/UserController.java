@@ -4,9 +4,11 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.entity.Role;
@@ -38,19 +40,16 @@ public class UserController {
 
     @PostMapping("/register")
     public String processRegisterForm(@Valid User user, BindingResult result){
-      //przy mailu skorzystac z existsByEmail
         if(userService.existsByEmail(user.getEmail())){
             result.rejectValue("email","Email już istnieje w bazie danych", "Email już istnieje w bazie danych");
         }
         if(user.getPassword2() != null && !user.getPassword2().equals(user.getPassword())){
             result.rejectValue("password2", "Hasła nie są takie same", "Hasła nie są takie same");
-            /*FieldError error = new FieldError("user", "password2", "Hasła nie są takie same");
-            result.addError(error);*/
         }
         if(result.hasErrors()){
             return "register";
         }
-        userService.save(user);
+        userService.saveUser(user);
         return "index";
     }
 
@@ -58,6 +57,30 @@ public class UserController {
     public String sbAdmin2(@AuthenticationPrincipal CurrentUser customUser, Model model){
         model.addAttribute("user", customUser.getUser());
         return "sb-admin-2";
+    }
+
+
+    @GetMapping("/addAdmin")
+    public String addAdmin(@AuthenticationPrincipal CurrentUser customUser, Model model){
+        model.addAttribute("admin", new User());
+        model.addAttribute("user", customUser.getUser());
+        return "addAdmin";
+    }
+
+    @PostMapping("/addAdmin")
+    public String processAddAdmin(@Valid @ModelAttribute("admin") User admin, BindingResult result){
+        if(userService.existsByEmail(admin.getEmail())){
+            result.rejectValue("email","Email już istnieje w bazie danych", "Email już istnieje w bazie danych");
+
+        }
+        if(admin.getPassword2() != null && !admin.getPassword2().equals(admin.getPassword())){
+            result.rejectValue("password2", "Hasła nie są takie same", "Hasła nie są takie same");
+        }
+        if(result.hasErrors()){
+            return "addAdmin";
+        }
+        userService.saveAdmin(admin);
+        return "redirect:/users/sb-admin-2";
     }
 
 }

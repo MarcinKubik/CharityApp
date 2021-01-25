@@ -4,5 +4,6 @@ import pl.coderslab.charity.entity.User;
 
 public interface UserServiceInterface {
     User findByEmail(String name);
-    void save(User user);
+    void saveUser(User user);
+    void saveAdmin(User user);
 }

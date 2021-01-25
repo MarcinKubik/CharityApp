@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Lista Fundacji</title>
+    <title>Dodaj Fundację</title>
 
     <!-- Custom fonts for this template-->
     <link href="../../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -426,12 +426,32 @@
                                 <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
                             </div>
                             <div class="card-body">
-                              <c:forEach items="${institutions}" var="institution">
-                                  <p>${institution.name}
-                                  <a href="/institutions/edit/${institution.id}" class="btn-facebook">Edytuj</a>
-                                  <a href="/institutions/delete/${institution.id}" class="btn-facebook">Usuń</a>
-                                  </p>
-                              </c:forEach>
+                                <form:form modelAttribute="admin" method="post" action="/users/addAdmin">
+                                    <div>
+                                        <form:hidden path="id"/>
+                                        <div>
+                                            <form:input path="name" placeholder="Imię"/>
+                                            <form:errors path="name"/>
+                                        </div>
+                                        <div>
+                                            <form:input path="surname" placeholder="Nazwisko"/>
+                                            <form:errors path="surname"/>
+                                        </div>
+                                        <div>
+                                            <form:input path="email" type="email" placeholder="Email" />
+                                            <form:errors path="email"/>
+                                        </div>
+                                        <div>
+                                            <form:input path="password" type="password" placeholder="Hasło" />
+                                            <form:errors path="password"/>
+                                        </div>
+                                        <div>
+                                            <form:input path="password2" type="password" placeholder="Powtórz hasło" />
+                                            <form:errors path="password2"/>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn-facebook">Zapisz dane</button>
+                                </form:form>
                             </div>
                         </div>
 

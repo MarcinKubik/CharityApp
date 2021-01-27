@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Lista Fundacji</title>
+    <title>Lista administratorów</title>
 
     <!-- Custom fonts for this template-->
     <link href="../../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -426,12 +426,18 @@
                                 <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
                             </div>
                             <div class="card-body">
-                              <c:forEach items="${institutions}" var="institution">
-                                  <p>${institution.name}
-                                  <a href="/institutions/edit/${institution.id}" class="btn-facebook">Edytuj</a>
-                                  <a href="/institutions/delete/${institution.id}" class="btn-facebook">Usuń</a>
-                                  </p>
-                              </c:forEach>
+                            <%--    <c:forEach items="${institutions}" var="institution">
+                                    <p>${institution.name}
+                                        <a href="/institutions/edit/${institution.id}" class="btn-facebook">Edytuj</a>
+                                        <a href="/institutions/delete/${institution.id}" class="btn-facebook">Usuń</a>
+                                    </p>
+                                </c:forEach>--%>
+                                <c:forEach items="${admins}" var="admin">
+                                    <p>${admin.fullName}
+                                        <a href="/users/edit/${admin.id}" class="btn-facebook">Edytuj</a>
+                                        <a href="/users/delete/${admin.id}" class="btn-facebook">Usuń</a>
+                                    </p>
+                                </c:forEach>
                             </div>
                         </div>
 

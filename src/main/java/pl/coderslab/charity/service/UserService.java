@@ -9,6 +9,7 @@ import pl.coderslab.charity.interfaces.UserServiceInterface;
 import pl.coderslab.charity.repository.RoleRepository;
 import pl.coderslab.charity.repository.UserRepository;
 
+import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -83,5 +84,9 @@ public class UserService implements UserServiceInterface {
 
     public boolean existsByEmail(String email){
         return userRepository.existsByEmail(email);
+    }
+
+    public List<User> findAdmins(String name){
+        return userRepository.findAllByRoles_Name(name);
     }
 }

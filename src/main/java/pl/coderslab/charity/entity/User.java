@@ -35,6 +35,9 @@ public class User {
     @Transient
     @Pattern(regexp = "\\S{8,}", message = "Hasło musi zawierać co najmniej 8 znaków")
     private String password2;
+    @Transient
+    @Pattern(regexp = "\\S{8,}", message = "Hasło musi zawierać co najmniej 8 znaków")
+    private String oldPassword;
     private int enabled;
 
     @ManyToMany(fetch = FetchType.EAGER)

@@ -55,6 +55,21 @@ public class UserService implements UserServiceInterface {
         userRepository.save(user);
     }
 
+    public void editAdmin(User user){
+        user.setEnabled(1);
+        Role userRole = roleRepository.findByName("ROLE_ADMIN");
+        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        userRepository.save(user);
+    }
+
+    public void editAdminPassword(User user){
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setEnabled(1);
+        Role userRole = roleRepository.findByName("ROLE_ADMIN");
+        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        userRepository.save(user);
+    }
+
     public void createFirstAdmin(){
         User admin = new User();
         admin.setName("Marcin");
@@ -68,10 +83,6 @@ public class UserService implements UserServiceInterface {
         userRepository.save(admin);
     }
 
-
-    public void update(User user){
-        userRepository.save(user);
-    }
 
     public void delete(Long id){
         userRepository.deleteById(id);

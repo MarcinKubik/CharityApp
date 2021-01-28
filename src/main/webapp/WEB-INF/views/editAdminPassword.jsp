@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dodaj Fundację</title>
+    <title>Edytuj hasło administratora</title>
 
     <!-- Custom fonts for this template-->
     <link href="../../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -426,22 +426,24 @@
                                 <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
                             </div>
                             <div class="card-body">
-                                <form:form modelAttribute="admin" method="post" action="/users/edit">
+                                <form:form modelAttribute="admin" method="post" action="/users/editPassword">
                                     <div>
                                         <form:hidden path="id"/>
+                                        <form:hidden path="name"/>
+                                        <form:hidden path="surname"/>
+                                        <form:hidden path="email"/>
                                         <div>
-                                            <form:input path="name" placeholder="Imię"/>
-                                            <form:errors path="name"/>
+                                            <form:input path="oldPassword" type="password" placeholder="Podaj aktualne hasło"/>
+                                            <form:errors path="oldPassword"/>
                                         </div>
                                         <div>
-                                            <form:input path="surname" placeholder="Nazwisko"/>
-                                            <form:errors path="surname"/>
+                                            <form:input path="password" type="password" placeholder="Podaj nowe hasło"/>
+                                            <form:errors path="password"/>
                                         </div>
                                         <div>
-                                            <form:input path="email" type="email" placeholder="Email" />
-                                            <form:errors path="email"/>
+                                            <form:input path="password2" type="password" placeholder="Powtórz nowe hasło"/>
+                                            <form:errors path="password2"/>
                                         </div>
-                                        <form:hidden path="password"/>
                                     </div>
                                     <button type="submit" class="btn-facebook">Zapisz dane</button>
                                 </form:form>

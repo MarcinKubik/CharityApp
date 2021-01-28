@@ -26,10 +26,12 @@ import java.util.Set;
 public class UserController {
     private final UserService userService;
     private final RoleService roleService;
+    private final BCryptPasswordEncoder passwordEncoder;
 
-    public UserController(UserService userService, RoleService roleService) {
+    public UserController(UserService userService, RoleService roleService, BCryptPasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.roleService = roleService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/register")
@@ -98,9 +100,70 @@ public class UserController {
         if(admin == null){
             return "problemAdmin";
         }
-        admin.setPassword(null);
         model.addAttribute("admin", admin);
         return "editAdmin";
+    }
+
+    @PostMapping("/edit")
+    public String processEdit(@Valid @ModelAttribute("admin") User admin, BindingResult result){
+        if(userService.existsByEmail(admin.getEmail())){
+            Optional<User> optionalUser = userService.get(admin.getId());
+            User adminFromDatabase = optionalUser.orElse(null);
+            if(adminFromDatabase == null){
+                return "problemAdmin";
+            }
+            if(!adminFromDatabase.getEmail().equals(admin.getEmail())){ //checking if admin is trying change email to email of another admin
+                FieldError error = new FieldError("admin", "email", "Email już istnieje w bazie danych");
+                result.addError(error);
+            }
+
+        }
+        if(result.hasErrors()){
+            return "editAdmin";
+        }
+        userService.editAdmin(admin);
+        return "redirect:/users/list";
+    }
+
+    @GetMapping("/editPassword/{id}")
+    public String editPassword(@PathVariable Long id, Model model){
+        Optional<User> optionalUser = userService.get(id);
+        User admin = optionalUser.orElse(null);
+        if(admin == null){
+            return "problemAdmin";
+        }
+        admin.setPassword("");
+        model.addAttribute("admin", admin);
+        return "editAdminPassword";
+    }
+
+    @PostMapping("/editPassword")
+    public String processEditPassword(@Valid @ModelAttribute("admin") User admin, BindingResult result){
+
+        Optional<User> optionalUser = userService.get(admin.getId());
+        User adminFromDataBase = optionalUser.orElse(null);
+        if(adminFromDataBase == null){
+            return "problemAdmin";
+        }
+
+        String oldPasswordFromDataBase = adminFromDataBase.getPassword();
+        String oldPasswordFromForm = admin.getOldPassword();
+
+        if(!passwordEncoder.matches(oldPasswordFromForm, oldPasswordFromDataBase)){
+            FieldError error = new FieldError("admin", "oldPassword", "Hasło nie jest poprawne");
+            result.addError(error);
+        }
+
+        if(!admin.getPassword().equals(admin.getPassword2())){
+            FieldError error = new FieldError("admin", "password2", "Hasła nie są takie same");
+            result.addError(error);
+        }
+
+        if(result.hasErrors()){
+            return "editAdminPassword";
+        }
+        userService.editAdminPassword(admin);
+        return "redirect:/users/list";
     }
 
     @GetMapping("/delete/{id}")

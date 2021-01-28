@@ -17,7 +17,7 @@ public class Institution {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull(message = "Podaj nazwę fundacji")
+    @NotEmpty(message = "Podaj nazwę fundacji")
     private String name;
     @NotEmpty(message = "Opis fundacji nie może być pusty")
     private String description;

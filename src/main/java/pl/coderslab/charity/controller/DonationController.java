@@ -1,5 +1,6 @@
 package pl.coderslab.charity.controller;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,6 +12,7 @@ import pl.coderslab.charity.entity.Category;
 import pl.coderslab.charity.entity.Donation;
 import pl.coderslab.charity.entity.Institution;
 import pl.coderslab.charity.service.CategoryService;
+import pl.coderslab.charity.service.CurrentUser;
 import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.InstitutionService;
 
@@ -42,9 +44,12 @@ public class DonationController {
     }
 
     @GetMapping("/form")
-    public String form(Model model){
+    public String form(Model model, @AuthenticationPrincipal CurrentUser customUser){
         model.addAttribute("donation", new Donation());
-        return "form";
+
+            return "form";
+
+       // return "blocked";
     }
 
     @PostMapping("/form")
@@ -54,6 +59,5 @@ public class DonationController {
         }
             donationService.save(donation);
             return "form-confirmation";
-
     }
 }

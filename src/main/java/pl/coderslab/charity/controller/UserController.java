@@ -109,4 +109,27 @@ public class UserController {
         return "redirect:/users/list";
     }
 
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable Long id){
+        Optional<User> optionalUser = userService.get(id);
+        User user = optionalUser.orElse(null);
+        if(user == null){
+            return "problemAdmin";
+        }
+
+        userService.delete(id);
+        return "redirect:/users/list";
+    }
+
+    @GetMapping("/block/{id}")
+    public String blockUser(@PathVariable Long id){
+        Optional<User> optionalUser = userService.get(id);
+        User user = optionalUser.orElse(null);
+        if(user == null){
+            return "problemAdmin";
+        }
+
+        userService.block(user);
+        return "redirect:/users/list";
+    }
 }

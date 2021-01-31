@@ -28,17 +28,17 @@ public class UserService implements UserServiceInterface {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public List<User> getUsers(){
+    public List<User> getUsers() {
         return userRepository.findAll();
     }
 
-    public Optional<User> get(Long id){
+    public Optional<User> get(Long id) {
         Optional<User> optionalUser = userRepository.findById(id);
         return optionalUser;
     }
 
     @Override
-    public void saveUser(User user){
+    public void saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setEnabled(1);
         Role userRole = roleRepository.findByName("ROLE_USER");
@@ -47,7 +47,7 @@ public class UserService implements UserServiceInterface {
     }
 
     @Override
-    public void saveAdmin(User user){
+    public void saveAdmin(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setEnabled(1);
         Role userRole = roleRepository.findByName("ROLE_ADMIN");
@@ -55,21 +55,21 @@ public class UserService implements UserServiceInterface {
         userRepository.save(user);
     }
 
-    public void editAdmin(User user){
+    public void editAdmin(User user) {
         user.setEnabled(1);
         Role userRole = roleRepository.findByName("ROLE_ADMIN");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
     }
 
-    public void editUser(User user){
+    public void editUser(User user) {
         user.setEnabled(1);
         Role userRole = roleRepository.findByName("ROLE_USER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
     }
 
-    public void editAdminPassword(User user){
+    public void editAdminPassword(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setEnabled(1);
         Role userRole = roleRepository.findByName("ROLE_ADMIN");
@@ -77,7 +77,7 @@ public class UserService implements UserServiceInterface {
         userRepository.save(user);
     }
 
-    public void editUserPassword(User user){
+    public void editUserPassword(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setEnabled(1);
         Role userRole = roleRepository.findByName("ROLE_USER");
@@ -85,7 +85,12 @@ public class UserService implements UserServiceInterface {
         userRepository.save(user);
     }
 
-    public void createFirstAdmin(){
+    public void block(User user) {
+        user.setEnabled(0);
+        userRepository.save(user);
+    }
+
+    public void createFirstAdmin() {
         User admin = new User();
         admin.setName("Marcin");
         admin.setSurname("Kubik");
@@ -99,20 +104,21 @@ public class UserService implements UserServiceInterface {
     }
 
 
-    public void delete(Long id){
+    public void delete(Long id) {
         userRepository.deleteById(id);
     }
 
+
     @Override
-    public User findByEmail(String email){
+    public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
-    public boolean existsByEmail(String email){
+    public boolean existsByEmail(String email) {
         return userRepository.existsByEmail(email);
     }
 
-    public List<User> findUsersByRole(String name){
+    public List<User> findUsersByRole(String name) {
         return userRepository.findAllByRoles_Name(name);
     }
 }

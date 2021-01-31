@@ -426,7 +426,7 @@
                                 <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
                             </div>
                             <div class="card-body">
-                                <form:form modelAttribute="admin" method="post" action="/admins/editPassword">
+                                <form:form modelAttribute="userToEditPassword" method="post">
                                     <div>
                                         <form:hidden path="id"/>
                                         <form:hidden path="name"/>

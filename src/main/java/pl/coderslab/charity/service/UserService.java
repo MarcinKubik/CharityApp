@@ -77,6 +77,14 @@ public class UserService implements UserServiceInterface {
         userRepository.save(user);
     }
 
+    public void editUserPassword(User user){
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setEnabled(1);
+        Role userRole = roleRepository.findByName("ROLE_USER");
+        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        userRepository.save(user);
+    }
+
     public void createFirstAdmin(){
         User admin = new User();
         admin.setName("Marcin");

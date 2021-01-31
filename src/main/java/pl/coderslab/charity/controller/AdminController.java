@@ -75,12 +75,12 @@ public class AdminController {
         if(admin == null){
             return "problemAdmin";
         }
-        model.addAttribute("admin", admin);
+        model.addAttribute("userToEdit", admin);
         return "editAdmin";
     }
 
-    @PostMapping("/edit")
-    public String processEdit(@Valid @ModelAttribute("admin") User admin, BindingResult result){
+    @PostMapping("/edit/{id}")
+    public String processEdit(@Valid @ModelAttribute("userToEdit") User admin, BindingResult result){
         if(userService.existsByEmail(admin.getEmail())){
             Optional<User> optionalUser = userService.get(admin.getId());
             User adminFromDatabase = optionalUser.orElse(null);
@@ -108,12 +108,12 @@ public class AdminController {
             return "problemAdmin";
         }
         admin.setPassword("");
-        model.addAttribute("admin", admin);
+        model.addAttribute("userToEditPassword", admin);
         return "editAdminPassword";
     }
 
-    @PostMapping("/editPassword")
-    public String processEditPassword(@Valid @ModelAttribute("admin") User admin, BindingResult result){
+    @PostMapping("/editPassword/{id}")
+    public String processEditPassword(@Valid @ModelAttribute("userToEditPassword") User admin, BindingResult result){
 
         Optional<User> optionalUser = userService.get(admin.getId());
         User adminFromDataBase = optionalUser.orElse(null);

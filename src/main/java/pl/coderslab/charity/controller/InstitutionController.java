@@ -40,7 +40,7 @@ public class InstitutionController {
         }
 
         institutionService.save(institution);
-        return "redirect:/users/sb-admin-2";
+        return "redirect:/admins/sb-admin-2";
     }
 
     @GetMapping("/list")

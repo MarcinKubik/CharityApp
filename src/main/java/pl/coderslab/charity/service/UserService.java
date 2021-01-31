@@ -97,7 +97,7 @@ public class UserService implements UserServiceInterface {
         return userRepository.existsByEmail(email);
     }
 
-    public List<User> findAdmins(String name){
+    public List<User> findAdminsByRole(String name){
         return userRepository.findAllByRoles_Name(name);
     }
 }

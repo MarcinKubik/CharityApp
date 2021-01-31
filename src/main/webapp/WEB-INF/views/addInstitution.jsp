@@ -87,8 +87,8 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Operacje:</h6>
-                    <a class="collapse-item" href="/users/addAdmin">Dodaj administratora</a>
-                    <a class="collapse-item" href="/users/listAdmin">Lista administratorów</a>
+                    <a class="collapse-item" href="/admins/addAdmin">Dodaj administratora</a>
+                    <a class="collapse-item" href="/admins/listAdmin">Lista administratorów</a>
                 </div>
             </div>
         </li>

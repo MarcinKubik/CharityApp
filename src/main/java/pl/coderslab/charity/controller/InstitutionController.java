@@ -44,9 +44,10 @@ public class InstitutionController {
     }
 
     @GetMapping("/list")
-    public String list(Model model){
+    public String list(@AuthenticationPrincipal CurrentUser customUser, Model model){
         List<Institution> institutions = institutionService.getInstitutions();
         model.addAttribute("institutions", institutions);
+        model.addAttribute("user", customUser.getUser());
         return "listInstitution";
     }
 

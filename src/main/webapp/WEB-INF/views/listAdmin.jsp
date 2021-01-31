@@ -87,8 +87,8 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Operacje:</h6>
-                    <a class="collapse-item" href="/users/add">Dodaj administratora</a>
-                    <a class="collapse-item" href="/users/list">Lista administratorów</a>
+                    <a class="collapse-item" href="/admins/add">Dodaj administratora</a>
+                    <a class="collapse-item" href="/admins/list">Lista administratorów</a>
                 </div>
             </div>
         </li>
@@ -409,9 +409,9 @@
 
                                 <c:forEach items="${admins}" var="admin">
                                     <p>${admin.fullName}
-                                        <a href="/users/edit/${admin.id}" class="btn-facebook">Edytuj</a>
-                                        <a href="/users/editPassword/${admin.id}" class="btn-facebook">Edytuj hasło</a>
-                                        <a href="/users/delete/${admin.id}" class="btn-facebook">Usuń</a>
+                                        <a href="/admins/edit/${admin.id}" class="btn-facebook">Edytuj</a>
+                                        <a href="/admins/editPassword/${admin.id}" class="btn-facebook">Edytuj hasło</a>
+                                        <a href="/admins/delete/${admin.id}" class="btn-facebook">Usuń</a>
                                     </p>
                                 </c:forEach>
                             </div>

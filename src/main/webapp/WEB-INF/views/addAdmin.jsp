@@ -87,8 +87,8 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Operacje:</h6>
-                    <a class="collapse-item" href="/users/add">Dodaj administratora</a>
-                    <a class="collapse-item" href="/users/list">Lista administratorów</a>
+                    <a class="collapse-item" href="/admins/add">Dodaj administratora</a>
+                    <a class="collapse-item" href="/admins/list">Lista administratorów</a>
                 </div>
             </div>
         </li>
@@ -426,7 +426,7 @@
                                 <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
                             </div>
                             <div class="card-body">
-                                <form:form modelAttribute="admin" method="post" action="/users/add">
+                                <form:form modelAttribute="admin" method="post" action="/admins/add">
                                     <div>
                                         <form:hidden path="id"/>
                                         <div>

@@ -138,8 +138,10 @@
 
         <!-- Sidebar Message -->
         <div class="sidebar-card">
-            <img class="sidebar-card-illustration mb-2"  src="<c:url value="../../resources/img/undraw_rocket.svg"/>" alt="">
-            <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
+            <img class="sidebar-card-illustration mb-2" src="<c:url value="../../resources/img/undraw_rocket.svg"/>"
+                 alt="">
+            <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and
+                more!</p>
             <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
         </div>
 
@@ -268,37 +270,43 @@
                             </h6>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="<c:url value="../../resources/img/undraw_profile_1.svg"/>"
+                                    <img class="rounded-circle"
+                                         src="<c:url value="../../resources/img/undraw_profile_1.svg"/>"
                                          alt="">
                                     <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div class="font-weight-bold">
                                     <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                        problem I've been having.</div>
+                                        problem I've been having.
+                                    </div>
                                     <div class="small text-gray-500">Emily Fowler · 58m</div>
                                 </div>
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="<c:url value="../../resources/img/undraw_profile_2.svg"/>"
+                                    <img class="rounded-circle"
+                                         src="<c:url value="../../resources/img/undraw_profile_2.svg"/>"
                                          alt="">
                                     <div class="status-indicator"></div>
                                 </div>
                                 <div>
                                     <div class="text-truncate">I have the photos that you ordered last month, how
-                                        would you like them sent to you?</div>
+                                        would you like them sent to you?
+                                    </div>
                                     <div class="small text-gray-500">Jae Chun · 1d</div>
                                 </div>
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="<c:url value="../../resources/img/undraw_profile_3.svg"/>"
+                                    <img class="rounded-circle"
+                                         src="<c:url value="../../resources/img/undraw_profile_3.svg"/>"
                                          alt="">
                                     <div class="status-indicator bg-warning"></div>
                                 </div>
                                 <div>
                                     <div class="text-truncate">Last month's report looks great, I am very happy with
-                                        the progress so far, keep up the good work!</div>
+                                        the progress so far, keep up the good work!
+                                    </div>
                                     <div class="small text-gray-500">Morgan Alvarez · 2d</div>
                                 </div>
                             </a>
@@ -310,7 +318,8 @@
                                 </div>
                                 <div>
                                     <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                        told me that people say this to all dogs, even if they aren't good...</div>
+                                        told me that people say this to all dogs, even if they aren't good...
+                                    </div>
                                     <div class="small text-gray-500">Chicken the Dog · 2w</div>
                                 </div>
                             </a>
@@ -383,7 +392,22 @@
 
 
                     <div class="col-lg-6 mb-4">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
+                            </div>
+                            <div class="card-body">
 
+                                <c:forEach items="${users}" var="user">
+                                    <p>${user.fullName}
+                                        <a href="/users/edit/${user.id}" class="btn-facebook">Edytuj</a>
+                                        <a href="/users/editPassword/${user.id}" class="btn-facebook">Edytuj hasło</a>
+                                        <a href="/users/block/${user.id}" class="btn-facebook">Zablokuj</a>
+                                        <a href="/users/delete/${user.id}" class="btn-facebook">Usuń</a>
+                                    </p>
+                                </c:forEach>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

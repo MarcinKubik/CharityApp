@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Lista Fundacji</title>
+    <title>Edytuj użytkownika</title>
 
     <!-- Custom fonts for this template-->
     <link href="../../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -401,17 +401,50 @@
 
                     <div class="col-lg-6 mb-4">
 
+                        <!-- Illustrations -->
+                        <%-- <div class="card shadow mb-4">
+                             <div class="card-header py-3">
+                                 <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                             </div>
+                             <div class="card-body">
+                                &lt;%&ndash; <div class="text-center">
+                                     <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                                          src="<c:url value="resources/img/undraw_posting_photo.svg"/>" alt="">
+                                 </div>&ndash;%&gt;
+                                 <p>Add some quality, svg illustrations to your project courtesy of <a
+                                         target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
+                                     constantly updated collection of beautiful svg images that you can use
+                                     completely free and without attribution!</p>
+                                 <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
+                                     unDraw &rarr;</a>
+                             </div>
+                         </div>--%>
+
+                        <!-- Approach -->
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
                             </div>
                             <div class="card-body">
-                              <c:forEach items="${institutions}" var="institution">
-                                  <p>${institution.name}
-                                  <a href="/institutions/edit/${institution.id}" class="btn-facebook">Edytuj</a>
-                                  <a href="/institutions/delete/${institution.id}" class="btn-facebook">Usuń</a>
-                                  </p>
-                              </c:forEach>
+                                <form:form modelAttribute="userToEdit" method="post" action="/users/edit">
+                                    <div>
+                                        <form:hidden path="id"/>
+                                        <div>
+                                            <form:input path="name" placeholder="Imię"/>
+                                            <form:errors path="name"/>
+                                        </div>
+                                        <div>
+                                            <form:input path="surname" placeholder="Nazwisko"/>
+                                            <form:errors path="surname"/>
+                                        </div>
+                                        <div>
+                                            <form:input path="email" type="email" placeholder="Email" />
+                                            <form:errors path="email"/>
+                                        </div>
+                                        <form:hidden path="password"/>
+                                    </div>
+                                    <button type="submit" class="btn-facebook">Zapisz dane</button>
+                                </form:form>
                             </div>
                         </div>
 

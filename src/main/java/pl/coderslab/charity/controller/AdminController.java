@@ -57,12 +57,12 @@ public class AdminController {
         }
 
         userService.saveAdmin(admin);
-        return "redirect:/users/sb-admin-2";
+        return "redirect:/admins/sb-admin-2";
     }
 
     @GetMapping("/list")
     public String list (@AuthenticationPrincipal CurrentUser customUser, Model model){
-        List<User> admins = userService.findAdminsByRole("ROLE_ADMIN");
+        List<User> admins = userService.findUsersByRole("ROLE_ADMIN");
         model.addAttribute("admins", admins);
         model.addAttribute("user", customUser.getUser());
         return "listAdmin";
@@ -97,7 +97,7 @@ public class AdminController {
             return "editAdmin";
         }
         userService.editAdmin(admin);
-        return "redirect:/users/list";
+        return "redirect:/admins/list";
     }
 
     @GetMapping("/editPassword/{id}")
@@ -138,7 +138,7 @@ public class AdminController {
             return "editAdminPassword";
         }
         userService.editAdminPassword(admin);
-        return "redirect:/users/list";
+        return "redirect:/admins/list";
     }
 
     @GetMapping("/delete/{id}")
@@ -150,7 +150,7 @@ public class AdminController {
         }
 
         userService.delete(id);
-        return "redirect:/users/list";
+        return "redirect:/admins/list";
     }
 
 }

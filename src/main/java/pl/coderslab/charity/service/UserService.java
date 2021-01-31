@@ -62,6 +62,13 @@ public class UserService implements UserServiceInterface {
         userRepository.save(user);
     }
 
+    public void editUser(User user){
+        user.setEnabled(1);
+        Role userRole = roleRepository.findByName("ROLE_USER");
+        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        userRepository.save(user);
+    }
+
     public void editAdminPassword(User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setEnabled(1);
@@ -97,7 +104,7 @@ public class UserService implements UserServiceInterface {
         return userRepository.existsByEmail(email);
     }
 
-    public List<User> findAdminsByRole(String name){
+    public List<User> findUsersByRole(String name){
         return userRepository.findAllByRoles_Name(name);
     }
 }

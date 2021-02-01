@@ -45,9 +45,5 @@ public class RegisterController {
         return "index";
     }
 
-    @GetMapping("/sb-admin-2")
-    public String sbAdmin2(@AuthenticationPrincipal CurrentUser customUser, Model model){
-        model.addAttribute("user", customUser.getUser());
-        return "sb-admin-2";
-    }
+
 }

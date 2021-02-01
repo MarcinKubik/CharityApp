@@ -1,7 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="form"
-           uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dodaj administratora</title>
+    <title>SB Admin 2 - Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="../../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -65,19 +63,18 @@
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-cog"></i>
-                <span>Fundacje</span>
+                <span>Moje konto</span>
             </a>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Operacje:</h6>
-                    <a class="collapse-item" href="/institutions/add">Dodaj fundację</a>
-                    <a class="collapse-item" href="/institutions/list">Lista fundacji</a>
+                    <a class="collapse-item" href="/users/user/edit">Edytuj dane</a>
                 </div>
             </div>
         </li>
 
         <!-- Nav Item - Utilities Collapse Menu -->
-        <li class="nav-item">
+     <%--   <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                aria-expanded="true" aria-controls="collapseUtilities">
                 <i class="fas fa-fw fa-wrench"></i>
@@ -91,7 +88,7 @@
                     <a class="collapse-item" href="/admins/list">Lista administratorów</a>
                 </div>
             </div>
-        </li>
+        </li>--%>
 
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -102,19 +99,25 @@
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
+       <%-- <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-fw fa-folder"></i>
-                <span>Pages</span>
+                <span>Użytkownicy</span>
             </a>
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Operacje:</h6>
                     <a class="collapse-item" href="/admins/users/list">Lista użytkowników</a>
+                    &lt;%&ndash;<a class="collapse-item" href="register.html">Register</a>
+                    <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                    <div class="collapse-divider"></div>
+                    <h6 class="collapse-header">Other Pages:</h6>
+                    <a class="collapse-item" href="404.html">404 Page</a>
+                    <a class="collapse-item" href="blank.html">Blank Page</a>&ndash;%&gt;
                 </div>
             </div>
-        </li>
+        </li>--%>
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
@@ -140,10 +143,8 @@
 
         <!-- Sidebar Message -->
         <div class="sidebar-card">
-            <img class="sidebar-card-illustration mb-2" src="<c:url value="../../resources/img/undraw_rocket.svg"/>"
-                 alt="">
-            <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and
-                more!</p>
+            <img class="sidebar-card-illustration mb-2"  src="<c:url value="../../resources/img/undraw_rocket.svg"/>" alt="">
+            <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
             <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
         </div>
 
@@ -272,43 +273,37 @@
                             </h6>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle"
-                                         src="<c:url value="../../resources/img/undraw_profile_1.svg"/>"
+                                    <img class="rounded-circle" src="<c:url value="../../resources/img/undraw_profile_1.svg"/>"
                                          alt="">
                                     <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div class="font-weight-bold">
                                     <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                        problem I've been having.
-                                    </div>
+                                        problem I've been having.</div>
                                     <div class="small text-gray-500">Emily Fowler · 58m</div>
                                 </div>
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle"
-                                         src="<c:url value="../../resources/img/undraw_profile_2.svg"/>"
+                                    <img class="rounded-circle" src="<c:url value="../../resources/img/undraw_profile_2.svg"/>"
                                          alt="">
                                     <div class="status-indicator"></div>
                                 </div>
                                 <div>
                                     <div class="text-truncate">I have the photos that you ordered last month, how
-                                        would you like them sent to you?
-                                    </div>
+                                        would you like them sent to you?</div>
                                     <div class="small text-gray-500">Jae Chun · 1d</div>
                                 </div>
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle"
-                                         src="<c:url value="../../resources/img/undraw_profile_3.svg"/>"
+                                    <img class="rounded-circle" src="<c:url value="../../resources/img/undraw_profile_3.svg"/>"
                                          alt="">
                                     <div class="status-indicator bg-warning"></div>
                                 </div>
                                 <div>
                                     <div class="text-truncate">Last month's report looks great, I am very happy with
-                                        the progress so far, keep up the good work!
-                                    </div>
+                                        the progress so far, keep up the good work!</div>
                                     <div class="small text-gray-500">Morgan Alvarez · 2d</div>
                                 </div>
                             </a>
@@ -320,8 +315,7 @@
                                 </div>
                                 <div>
                                     <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                        told me that people say this to all dogs, even if they aren't good...
-                                    </div>
+                                        told me that people say this to all dogs, even if they aren't good...</div>
                                     <div class="small text-gray-500">Chicken the Dog · 2w</div>
                                 </div>
                             </a>
@@ -415,39 +409,18 @@
                          </div>--%>
 
                         <!-- Approach -->
-                        <div class="card shadow mb-4">
+                        <%--<div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
                             </div>
                             <div class="card-body">
-                                <form:form modelAttribute="admin" method="post" action="/admins/add">
-                                    <div>
-                                        <form:hidden path="id"/>
-                                        <div>
-                                            <form:input path="name" placeholder="Imię"/>
-                                            <form:errors path="name"/>
-                                        </div>
-                                        <div>
-                                            <form:input path="surname" placeholder="Nazwisko"/>
-                                            <form:errors path="surname"/>
-                                        </div>
-                                        <div>
-                                            <form:input path="email" type="email" placeholder="Email" />
-                                            <form:errors path="email"/>
-                                        </div>
-                                        <div>
-                                            <form:input path="password" type="password" placeholder="Hasło" />
-                                            <form:errors path="password"/>
-                                        </div>
-                                        <div>
-                                            <form:input path="password2" type="password" placeholder="Powtórz hasło" />
-                                            <form:errors path="password2"/>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn-facebook">Zapisz dane</button>
-                                </form:form>
+                                <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
+                                    CSS bloat and poor page performance. Custom CSS classes are used to create
+                                    custom components and custom utility classes.</p>
+                                <p class="mb-0">Before working with this theme, you should become familiar with the
+                                    Bootstrap framework, especially the utility classes.</p>
                             </div>
-                        </div>
+                        </div>--%>
 
                     </div>
                 </div>
@@ -504,17 +477,23 @@
 </div>
 
 <!-- Bootstrap core JavaScript-->
+<%--<script src="resources/vendor/jquery/jquery.min.js"></script>
+<script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>--%>
 <script src="<c:url value="../../resources/vendor/jquery/jquery.min.js"/>"></script>
 <script src="<c:url value="../../resources/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
 
 <!-- Core plugin JavaScript-->
+<%--<script src="resources/vendor/jquery-easing/jquery.easing.min.js"></script>--%>
 <script src="<c:url value="../../resources/vendor/jquery-easing/jquery.easing.min.js"/>"></script>
 <!-- Custom scripts for all pages-->
+<%--<script src="resources/js/sb-admin-2.min.js"></script>--%>
 <script src="<c:url value="../../resources/js/sb-admin-2.min.js"/>"></script>
 <!-- Page level plugins -->
+<%--<script src="resources/vendor/chart.js/Chart.min.js"></script>--%>
 <script src="<c:url value="../../resources/vendor/chart.js/Chart.min.js"/>"></script>
 <!-- Page level custom scripts -->
-
+<%--<script src="resources/js/demo/chart-area-demo.js"></script>
+<script src="resources/js/demo/chart-pie-demo.js"></script>--%>
 <script src="<c:url value="../../resources/js/demo/chart-area-demo.js"/>"></script>
 <script src="<c:url value="../../resources/js/demo/chart-pie-demo.js"/>"></script>
 </body>

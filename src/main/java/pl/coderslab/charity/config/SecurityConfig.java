@@ -1,5 +1,6 @@
 package pl.coderslab.charity.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -9,11 +10,15 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import pl.coderslab.charity.service.SpringDataUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    AuthenticationSuccessHandler successHandler;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -31,12 +36,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/institutions/**").hasRole("ADMIN")
                 .antMatchers("/donations/form").hasRole("USER")
                 .antMatchers("/admins/**").hasRole("ADMIN")
-                .antMatchers("/users/**").hasRole("ADMIN")
+                .antMatchers("/users/**").hasRole("USER")
                 .antMatchers("/").permitAll()
                 .antMatchers("/register").not().hasAnyRole("ADMIN", "USER")
                 .antMatchers("/login").not().hasAnyRole("ADMIN", "USER")
                 .and().formLogin().loginPage("/login").usernameParameter("email")
-                .defaultSuccessUrl("/sb-admin-2")
+                .successHandler(successHandler)
                 .and().logout().logoutSuccessUrl("/")
                 .permitAll()
                 .and().exceptionHandling().accessDeniedPage("/403");

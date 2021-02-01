@@ -109,7 +109,7 @@
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Operacje:</h6>
-                    <a class="collapse-item" href="/users/list">Lista użytkowników</a>
+                    <a class="collapse-item" href="/admins/users/list">Lista użytkowników</a>
                 </div>
             </div>
         </li>

@@ -28,7 +28,8 @@ in good condition, to institutions which are responsible for passed this stuff t
 - Adding first admin, form of login and dashboard for admins (I have used Sb Admin pattern available on https://startbootstrap.com/themes/sb-admin-2/)
 - Operations on institutions: creating, reading, updating, deleting
 - Operations on admins: creating, reading, updating, deleting
+- Operations on users: creating, reading, updating, deleting
 
 ## Tasks in progress:
 
-- Operations on users: creating, reading, updating, deleting
+- Edition of user's profile

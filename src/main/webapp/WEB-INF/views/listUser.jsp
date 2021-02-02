@@ -400,10 +400,10 @@
 
                                 <c:forEach items="${users}" var="user">
                                     <p>${user.fullName}
-                                        <a href="/users/edit/${user.id}" class="btn-facebook">Edytuj</a>
-                                        <a href="/users/editPassword/${user.id}" class="btn-facebook">Edytuj hasło</a>
-                                        <a href="/users/block/${user.id}" class="btn-facebook">Zablokuj</a>
-                                        <a href="/users/delete/${user.id}" class="btn-facebook">Usuń</a>
+                                        <a href="/admins/users/edit/${user.id}" class="btn-facebook">Edytuj</a>
+                                        <a href="/admins/users/editPassword/${user.id}" class="btn-facebook">Edytuj hasło</a>
+                                        <a href="/admins/users/block/${user.id}" class="btn-facebook">Zablokuj</a>
+                                        <a href="/admins/users/delete/${user.id}" class="btn-facebook">Usuń</a>
                                     </p>
                                 </c:forEach>
                             </div>

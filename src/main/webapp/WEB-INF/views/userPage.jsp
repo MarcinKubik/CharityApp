@@ -69,6 +69,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Operacje:</h6>
                     <a class="collapse-item" href="/users/user/edit">Edytuj dane</a>
+                    <a class="collapse-item" href="/users/user/editPassword">Edytuj hasło</a>
                 </div>
             </div>
         </li>

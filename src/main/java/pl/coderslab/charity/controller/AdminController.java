@@ -69,12 +69,13 @@ public class AdminController {
     }
 
     @GetMapping("/edit/{id}")
-    public String edit(@PathVariable Long id, Model model){
+    public String edit(@PathVariable Long id, Model model, @AuthenticationPrincipal CurrentUser customUser){
         Optional<User> optionalUser = userService.get(id);
         User admin = optionalUser.orElse(null);
         if(admin == null){
             return "problemAdmin";
         }
+        model.addAttribute("user", customUser.getUser());
         model.addAttribute("userToEdit", admin);
         return "editAdmin";
     }

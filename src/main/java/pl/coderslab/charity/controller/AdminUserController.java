@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/admins/users")
+@RequestMapping("/adminsUsers")
 public class AdminUserController {
 
     private final UserService userService;
@@ -36,13 +36,14 @@ public class AdminUserController {
     }
 
     @GetMapping("/edit/{id}")
-    public String edit(@PathVariable Long id, Model model){
+    public String edit(@PathVariable Long id, Model model, @AuthenticationPrincipal CurrentUser currentUser){
         Optional<User> optionalUser = userService.get(id);
         User user = optionalUser.orElse(null);
+
         if(user == null){
             return "problemAdmin";
         }
-
+        model.addAttribute("user", currentUser.getUser());
         model.addAttribute("userToEdit", user);
         return "editAdmin";
     }
@@ -65,7 +66,7 @@ public class AdminUserController {
             return "editAdmin";
         }
         userService.editUser(user);
-        return "redirect:/admins/users/list";
+        return "redirect:/adminsUsers/list";
     }
 
     @GetMapping("/editPassword/{id}")
@@ -106,7 +107,7 @@ public class AdminUserController {
             return "editAdminPassword";
         }
         userService.editUserPassword(user);
-        return "redirect:/admins/users/list";
+        return "redirect:/adminsUsers/list";
     }
 
     @GetMapping("/delete/{id}")
@@ -118,7 +119,7 @@ public class AdminUserController {
         }
 
         userService.delete(id);
-        return "redirect:/admins/users/list";
+        return "redirect:/adminsUsers/list";
     }
 
     @GetMapping("/block/{id}")
@@ -130,6 +131,6 @@ public class AdminUserController {
         }
 
         userService.block(user);
-        return "redirect:/admins/users/list";
+        return "redirect:/adminsUsers/list";
     }
 }

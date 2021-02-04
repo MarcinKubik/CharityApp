@@ -109,7 +109,7 @@
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Operacje:</h6>
-                    <a class="collapse-item" href="/admins/users/list">Lista użytkowników</a>
+                    <a class="collapse-item" href="/adminsUsers/list">Lista użytkowników</a>
                 </div>
             </div>
         </li>
@@ -400,10 +400,10 @@
 
                                 <c:forEach items="${users}" var="user">
                                     <p>${user.fullName}
-                                        <a href="/admins/users/edit/${user.id}" class="btn-facebook">Edytuj</a>
-                                        <a href="/admins/users/editPassword/${user.id}" class="btn-facebook">Edytuj hasło</a>
-                                        <a href="/admins/users/block/${user.id}" class="btn-facebook">Zablokuj</a>
-                                        <a href="/admins/users/delete/${user.id}" class="btn-facebook">Usuń</a>
+                                        <a href="/adminsUsers/edit/${user.id}" class="btn-facebook">Edytuj</a>
+                                        <a href="/adminsUsers/editPassword/${user.id}" class="btn-facebook">Edytuj hasło</a>
+                                        <a href="/adminsUsers/block/${user.id}" class="btn-facebook">Zablokuj</a>
+                                        <a href="/adminsUsers/delete/${user.id}" class="btn-facebook">Usuń</a>
                                     </p>
                                 </c:forEach>
                             </div>

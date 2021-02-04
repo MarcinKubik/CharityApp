@@ -331,16 +331,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                                <c:forEach items="${user.roles}" var="role">
-                                    <c:choose>
-                                        <c:when test="${role.name eq 'ROLE_ADMIN'}">
-                                            <c:out value="Admin ${user.fullName}"/>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <c:out value="${user.fullName}"/>
-                                        </c:otherwise>
-                                    </c:choose>
-                                </c:forEach>
+                                 <c:out value="${user.fullName}"/>
                             </span>
                             <img class="img-profile rounded-circle"
                                  src="<c:url value="../../resources/img/undraw_profile.svg"/>">

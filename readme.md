@@ -29,7 +29,13 @@ in good condition, to institutions which are responsible for passed this stuff t
 - Operations on institutions: creating, reading, updating, deleting
 - Operations on admins: creating, reading, updating, deleting
 - Operations on users: creating, reading, updating, deleting
+- Edition of user's profile
 
 ## Tasks in progress:
 
-- Edition of user's profile
+- Work on views
+
+
+## Configuration
+To configure this application you need to create database charity-donation and set correct username and password to your database in 
+src/main/resources/application.properties file.

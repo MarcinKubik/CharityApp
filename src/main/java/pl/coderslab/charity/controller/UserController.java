@@ -35,6 +35,7 @@ public class UserController {
             return "problemAdmin";
         }
 
+        model.addAttribute("user", user);
         model.addAttribute("userToEdit", user);
         return "editAdmin";
     }
@@ -70,6 +71,7 @@ public class UserController {
         }
 
         user.setPassword("");
+        model.addAttribute("user", user);
         model.addAttribute("userToEditPassword", user);
         return "editAdminPassword";
     }

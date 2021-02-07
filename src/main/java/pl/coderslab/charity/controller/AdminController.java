@@ -64,7 +64,14 @@ public class AdminController {
     public String list (@AuthenticationPrincipal CurrentUser customUser, Model model){
         List<User> admins = userService.findUsersByRole("ROLE_ADMIN");
         model.addAttribute("admins", admins);
-        model.addAttribute("user", customUser.getUser());
+        Optional<User> optionalCurrentAdmin = userService.get(customUser.getUser().getId());
+        User currentAdmin = optionalCurrentAdmin.orElse(null);
+
+        if(currentAdmin == null){
+            return "problemAdmin";
+        }
+
+        model.addAttribute("user", currentAdmin);
         return "listAdmin";
     }
 
@@ -75,7 +82,15 @@ public class AdminController {
         if(admin == null){
             return "problemAdmin";
         }
-        model.addAttribute("user", customUser.getUser());
+
+        Optional<User> optionalCurrentAdmin = userService.get(customUser.getUser().getId());
+        User currentAdmin = optionalCurrentAdmin.orElse(null);
+
+        if(currentAdmin == null){
+            return "problemAdmin";
+        }
+
+        model.addAttribute("user", currentAdmin);
         model.addAttribute("userToEdit", admin);
         return "editAdmin";
     }
@@ -97,6 +112,7 @@ public class AdminController {
         if(result.hasErrors()){
             return "editAdmin";
         }
+
         userService.editAdmin(admin);
         return "redirect:/admins/list";
     }

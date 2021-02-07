@@ -78,7 +78,7 @@
                             </div>
                         </div>
                     </c:when>
-                    <c:when test="${role.name eq 'ROLE_USER'}">
+                    <c:otherwise>
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                            aria-expanded="true" aria-controls="collapseTwo">
                             <i class="fas fa-fw fa-cog"></i>
@@ -91,7 +91,7 @@
                                 <a class="collapse-item" href="/users/user/editPassword">Edytuj hasło</a>
                             </div>
                         </div>
-                    </c:when>
+                    </c:otherwise>
                 </c:choose>
             </c:forEach>
 

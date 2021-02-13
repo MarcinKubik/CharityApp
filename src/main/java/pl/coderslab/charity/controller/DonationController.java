@@ -11,26 +11,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.entity.Category;
 import pl.coderslab.charity.entity.Donation;
 import pl.coderslab.charity.entity.Institution;
-import pl.coderslab.charity.service.CategoryService;
-import pl.coderslab.charity.service.CurrentUser;
-import pl.coderslab.charity.service.DonationService;
-import pl.coderslab.charity.service.InstitutionService;
+import pl.coderslab.charity.service.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping("/donations")
 public class DonationController {
 
     private final CategoryService categoryService;
     private final InstitutionService institutionService;
     private final DonationService donationService;
+    private final UserService userService;
 
-    public DonationController(CategoryService categoryService, InstitutionService institutionService, DonationService donationService) {
+    public DonationController(CategoryService categoryService, InstitutionService institutionService, DonationService donationService,
+                              UserService userService) {
         this.categoryService = categoryService;
         this.institutionService = institutionService;
         this.donationService = donationService;
+        this.userService = userService;
     }
 
     @ModelAttribute("categories")
@@ -46,10 +45,9 @@ public class DonationController {
     @GetMapping("/form")
     public String form(Model model, @AuthenticationPrincipal CurrentUser customUser){
         model.addAttribute("donation", new Donation());
+        model.addAttribute("user", customUser.getUser());
 
             return "form";
-
-       // return "blocked";
     }
 
     @PostMapping("/form")
@@ -57,6 +55,7 @@ public class DonationController {
         if(result.hasErrors()){
             return "form";
         }
+
             donationService.save(donation);
             return "form-confirmation";
     }

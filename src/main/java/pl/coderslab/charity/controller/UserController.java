@@ -7,11 +7,14 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.charity.entity.Donation;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.service.CurrentUser;
+import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.UserService;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -19,11 +22,14 @@ import java.util.Optional;
 public class UserController {
 
     private final UserService userService;
+    private final DonationService donationService;
     private final BCryptPasswordEncoder passwordEncoder;
 
-    public UserController(UserService userService, BCryptPasswordEncoder passwordEncoder) {
+    public UserController(UserService userService, BCryptPasswordEncoder passwordEncoder,
+                          DonationService donationService) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
+        this.donationService = donationService;
     }
 
     @GetMapping("/edit")
@@ -116,5 +122,12 @@ public class UserController {
 
         model.addAttribute("user", user);
         return "userPage";
+    }
+
+    @GetMapping("/donationList")
+    public String donationList(@AuthenticationPrincipal CurrentUser currentUser, Model model){
+        List<Donation> userDonations = donationService.findDonationsOfUser(currentUser.getUser());
+        model.addAttribute("userDonations", userDonations);
+        return "userDonations";
     }
 }

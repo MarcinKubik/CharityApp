@@ -46,4 +46,8 @@ public class Donation {
     private String pickUpComment;
     @NotNull
     private String phoneNumber;
+    private boolean delivered;
+    @ManyToOne
+    private User user;
+
 }

@@ -2,6 +2,7 @@ package pl.coderslab.charity.service;
 
 import org.springframework.stereotype.Service;
 import pl.coderslab.charity.entity.Donation;
+import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.repository.DonationRepository;
 
 import java.util.List;
@@ -24,8 +25,11 @@ public class DonationService {
         Optional<Donation> optionalDonation = donationRepository.findById(id);
         return optionalDonation;
     }
-
+    public List<Donation> findDonationsOfUser(User user){
+        return donationRepository.findAllByUser(user);
+    }
     public void save(Donation donation){
+        donation.setDelivered(false);
         donationRepository.save(donation);
     }
 

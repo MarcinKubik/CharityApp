@@ -1,7 +1,7 @@
 <img alt="Logo" src="http://coderslab.pl/svg/logo-coderslab.svg" width="400">
 
 ## Charity Application
-Application lets you possibility of giving unused things, like clothes, books, toys which are still 
+Application gives you possibility of giving unused things, like clothes, books, toys which are still 
 in good condition, to institutions which are responsible for passed this stuff to people whose may use it again.
 
 ## Technologies

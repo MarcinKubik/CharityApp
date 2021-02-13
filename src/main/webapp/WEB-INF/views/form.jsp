@@ -18,7 +18,7 @@
     <nav class="container container--70">
         <ul class="nav--actions">
             <li class="logged-user">
-                Witaj Agata
+                Witaj <c:out value="${user.fullName}"/>
                 <ul class="dropdown">
                     <li><a href="#">Profil</a></li>
                     <li><a href="#">Moje zbiórki</a></li>
@@ -94,6 +94,7 @@
         <div class="form--steps-counter">Krok <span>1</span>/4</div>
 
         <form:form modelAttribute="donation" action="form" method="post">
+            <form:hidden path="user" value="${user.id}"/>
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>

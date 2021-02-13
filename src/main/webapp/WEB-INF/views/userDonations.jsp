@@ -75,20 +75,20 @@
         </li>
 
         <!-- Nav Item - Utilities Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-               aria-expanded="true" aria-controls="collapseUtilities">
-                <i class="fas fa-fw fa-wrench"></i>
-                <span>Moje dary</span>
-            </a>
-            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                 data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Operacje:</h6>
-                    <a class="collapse-item" href="/users/user/donationList">Lista darów</a>
-                </div>
-            </div>
-        </li>
+           <li class="nav-item">
+               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                  aria-expanded="true" aria-controls="collapseUtilities">
+                   <i class="fas fa-fw fa-wrench"></i>
+                   <span>Moje dary</span>
+               </a>
+               <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                   <div class="bg-white py-2 collapse-inner rounded">
+                       <h6 class="collapse-header">Operacje:</h6>
+                       <a class="collapse-item" href="/users/user/donationList">Lista darów</a>
+                   </div>
+               </div>
+           </li>
 
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -99,25 +99,25 @@
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
-       <%-- <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-               aria-expanded="true" aria-controls="collapsePages">
-                <i class="fas fa-fw fa-folder"></i>
-                <span>Użytkownicy</span>
-            </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Operacje:</h6>
-                    <a class="collapse-item" href="/admins/users/list">Lista użytkowników</a>
-                    &lt;%&ndash;<a class="collapse-item" href="register.html">Register</a>
-                    <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                    <div class="collapse-divider"></div>
-                    <h6 class="collapse-header">Other Pages:</h6>
-                    <a class="collapse-item" href="404.html">404 Page</a>
-                    <a class="collapse-item" href="blank.html">Blank Page</a>&ndash;%&gt;
-                </div>
-            </div>
-        </li>--%>
+        <%-- <li class="nav-item">
+             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                aria-expanded="true" aria-controls="collapsePages">
+                 <i class="fas fa-fw fa-folder"></i>
+                 <span>Użytkownicy</span>
+             </a>
+             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                 <div class="bg-white py-2 collapse-inner rounded">
+                     <h6 class="collapse-header">Operacje:</h6>
+                     <a class="collapse-item" href="/admins/users/list">Lista użytkowników</a>
+                     &lt;%&ndash;<a class="collapse-item" href="register.html">Register</a>
+                     <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                     <div class="collapse-divider"></div>
+                     <h6 class="collapse-header">Other Pages:</h6>
+                     <a class="collapse-item" href="404.html">404 Page</a>
+                     <a class="collapse-item" href="blank.html">Blank Page</a>&ndash;%&gt;
+                 </div>
+             </div>
+         </li>--%>
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
@@ -380,38 +380,20 @@
 
                     <div class="col-lg-6 mb-4">
 
-                        <!-- Illustrations -->
-                        <%-- <div class="card shadow mb-4">
-                             <div class="card-header py-3">
-                                 <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
-                             </div>
-                             <div class="card-body">
-                                &lt;%&ndash; <div class="text-center">
-                                     <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                          src="<c:url value="resources/img/undraw_posting_photo.svg"/>" alt="">
-                                 </div>&ndash;%&gt;
-                                 <p>Add some quality, svg illustrations to your project courtesy of <a
-                                         target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
-                                     constantly updated collection of beautiful svg images that you can use
-                                     completely free and without attribution!</p>
-                                 <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
-                                     unDraw &rarr;</a>
-                             </div>
-                         </div>--%>
-
-                        <!-- Approach -->
-                        <%--<div class="card shadow mb-4">
+                        <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
                             </div>
                             <div class="card-body">
-                                <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
-                                    CSS bloat and poor page performance. Custom CSS classes are used to create
-                                    custom components and custom utility classes.</p>
-                                <p class="mb-0">Before working with this theme, you should become familiar with the
-                                    Bootstrap framework, especially the utility classes.</p>
+
+                             <c:forEach items="${userDonations}" var="donation">
+                              <p>
+                                 Donacja dla ${donation.institution.name}
+
+                                  <a href="/donations/details/${donation.id}">Szczegóły</a>
+                              </p>
+                             </c:forEach>
                             </div>
-                        </div>--%>
 
                     </div>
                 </div>

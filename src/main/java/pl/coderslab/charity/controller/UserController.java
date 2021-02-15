@@ -14,8 +14,11 @@ import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.UserService;
 
 import javax.validation.Valid;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Controller
 @RequestMapping("/users/user")
@@ -128,6 +131,31 @@ public class UserController {
     public String donationList(@AuthenticationPrincipal CurrentUser currentUser, Model model){
         List<Donation> userDonations = donationService.findDonationsOfUser(currentUser.getUser());
         model.addAttribute("userDonations", userDonations);
+        return "userDonations";
+    }
+
+    @GetMapping("/sortDonationsByTakenNotTaken")
+    public String sortDonationByTakenNotTaken(@AuthenticationPrincipal CurrentUser currentUser, Model model){
+        List<Donation> taken = donationService.findTakenAndNotTaken(currentUser.getUser(), true);
+        List<Donation> notTaken = donationService.findTakenAndNotTaken(currentUser.getUser(), false);
+        List<Donation> takenNotTaken =
+                Stream.concat(taken.stream(), notTaken.stream())
+                .collect(Collectors.toList());
+        model.addAttribute("userDonations", takenNotTaken);
+        return "userDonations";
+    }
+
+    @GetMapping("/sortDonationsByTakenFromMeDate")
+    public String sortDonationsByTakenFromMeDate(@AuthenticationPrincipal CurrentUser currentUser, Model model){
+        List<Donation> sortedByTakenFromMeDate = donationService.findAllSortedByTakenFromMeDateDesc(currentUser.getUser());
+        model.addAttribute("userDonations", sortedByTakenFromMeDate);
+        return "userDonations";
+    }
+
+    @GetMapping("/sortDonationsByCreationDate")
+    public String sortDonationsByCreationDate(@AuthenticationPrincipal CurrentUser currentUser, Model model){
+        List<Donation> sortedByCreationDate = donationService.findAllSortedByCreationDateDesc(currentUser.getUser());
+        model.addAttribute("userDonations", sortedByCreationDate);
         return "userDonations";
     }
 }

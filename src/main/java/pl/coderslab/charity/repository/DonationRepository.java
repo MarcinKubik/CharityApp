@@ -15,6 +15,8 @@ public interface DonationRepository extends JpaRepository<Donation, Long> {
    /* long count();*/  //jest w CrudRepository
 
     List<Donation> findAllByUser(User user);
-
+    List<Donation> findAllByUserAndTakenFromMe(User user, boolean taken);
+    List<Donation> findAllByUserOrderByTakenFromMeDateDesc(User user);
+    List<Donation> findAllByUserOrderByCreationDateDesc(User user);
 
 }

@@ -33,7 +33,7 @@ in good condition, to institutions which are responsible for passed this stuff t
 
 ## Tasks in progress:
 
-- Work on views
+- Management of user's donations(list, details, sorting by specific criteria)
 
 
 ## Configuration

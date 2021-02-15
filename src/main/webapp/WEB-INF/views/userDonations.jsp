@@ -75,20 +75,20 @@
         </li>
 
         <!-- Nav Item - Utilities Collapse Menu -->
-           <li class="nav-item">
-               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                  aria-expanded="true" aria-controls="collapseUtilities">
-                   <i class="fas fa-fw fa-wrench"></i>
-                   <span>Moje dary</span>
-               </a>
-               <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                   <div class="bg-white py-2 collapse-inner rounded">
-                       <h6 class="collapse-header">Operacje:</h6>
-                       <a class="collapse-item" href="/users/user/donationList">Lista darów</a>
-                   </div>
-               </div>
-           </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+               aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fas fa-fw fa-wrench"></i>
+                <span>Moje dary</span>
+            </a>
+            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                 data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Operacje:</h6>
+                    <a class="collapse-item" href="/users/user/sortDonationsByTakenNotTaken">Lista darów</a>
+                </div>
+            </div>
+        </li>
 
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -143,8 +143,10 @@
 
         <!-- Sidebar Message -->
         <div class="sidebar-card">
-            <img class="sidebar-card-illustration mb-2"  src="<c:url value="../../resources/img/undraw_rocket.svg"/>" alt="">
-            <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
+            <img class="sidebar-card-illustration mb-2" src="<c:url value="../../resources/img/undraw_rocket.svg"/>"
+                 alt="">
+            <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and
+                more!</p>
             <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
         </div>
 
@@ -273,37 +275,43 @@
                             </h6>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="<c:url value="../../resources/img/undraw_profile_1.svg"/>"
+                                    <img class="rounded-circle"
+                                         src="<c:url value="../../resources/img/undraw_profile_1.svg"/>"
                                          alt="">
                                     <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div class="font-weight-bold">
                                     <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                        problem I've been having.</div>
+                                        problem I've been having.
+                                    </div>
                                     <div class="small text-gray-500">Emily Fowler · 58m</div>
                                 </div>
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="<c:url value="../../resources/img/undraw_profile_2.svg"/>"
+                                    <img class="rounded-circle"
+                                         src="<c:url value="../../resources/img/undraw_profile_2.svg"/>"
                                          alt="">
                                     <div class="status-indicator"></div>
                                 </div>
                                 <div>
                                     <div class="text-truncate">I have the photos that you ordered last month, how
-                                        would you like them sent to you?</div>
+                                        would you like them sent to you?
+                                    </div>
                                     <div class="small text-gray-500">Jae Chun · 1d</div>
                                 </div>
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="<c:url value="../../resources/img/undraw_profile_3.svg"/>"
+                                    <img class="rounded-circle"
+                                         src="<c:url value="../../resources/img/undraw_profile_3.svg"/>"
                                          alt="">
                                     <div class="status-indicator bg-warning"></div>
                                 </div>
                                 <div>
                                     <div class="text-truncate">Last month's report looks great, I am very happy with
-                                        the progress so far, keep up the good work!</div>
+                                        the progress so far, keep up the good work!
+                                    </div>
                                     <div class="small text-gray-500">Morgan Alvarez · 2d</div>
                                 </div>
                             </a>
@@ -315,7 +323,8 @@
                                 </div>
                                 <div>
                                     <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                        told me that people say this to all dogs, even if they aren't good...</div>
+                                        told me that people say this to all dogs, even if they aren't good...
+                                    </div>
                                     <div class="small text-gray-500">Chicken the Dog · 2w</div>
                                 </div>
                             </a>
@@ -385,90 +394,105 @@
                                 <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
                             </div>
                             <div class="card-body">
+                                <p>
+                                    Posortuj według:
+                                    <a href="/users/user/sortDonationsByTakenNotTaken">Odebrane/nieodebrane</a>
+                                    <a href="/users/user/sortDonationsByTakenFromMeDate">Data odbioru</a>
+                                    <a href="/users/user/sortDonationsByCreationDate">Data utworzenia wpisu</a>
+                                </p>
+                                <c:forEach items="${userDonations}" var="donation">
+                                    <p>
+                                        Donacja dla ${donation.institution.name}
 
-                             <c:forEach items="${userDonations}" var="donation">
-                              <p>
-                                 Donacja dla ${donation.institution.name}
-
-                                  <a href="/donations/details/${donation.id}">Szczegóły</a>
-                              </p>
-                             </c:forEach>
+                                        <c:choose>
+                                            <c:when test="${donation.takenFromMe eq true}">
+                                                Odebrano : TAK
+                                                Dnia: ${donation.takenFromMeDate}
+                                            </c:when>
+                                            <c:otherwise>
+                                                Odebrano : NIE
+                                            </c:otherwise>
+                                        </c:choose>
+                                        Data utworzenia wpisu: ${donation.creationDate}
+                                        <a href="/donations/details/${donation.id}">Szczegóły</a>
+                                    </p>
+                                </c:forEach>
                             </div>
 
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2020</span>
                     </div>
                 </div>
-
-            </div>
-            <!-- /.container-fluid -->
+            </footer>
+            <!-- End of Footer -->
 
         </div>
-        <!-- End of Main Content -->
+        <!-- End of Content Wrapper -->
 
-        <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2020</span>
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <%--<a class="btn btn-primary" href="login.html">Logout</a>--%>
+                    <form action="<c:url value="/logout"/>" method="post">
+                        <input class="btn btn-primary" type="submit" value="Logout">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    </form>
                 </div>
             </div>
-        </footer>
-        <!-- End of Footer -->
-
-    </div>
-    <!-- End of Content Wrapper -->
-
-</div>
-<!-- End of Page Wrapper -->
-
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
-
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <%--<a class="btn btn-primary" href="login.html">Logout</a>--%>
-                <form action="<c:url value="/logout"/>" method="post">
-                    <input class="btn btn-primary" type="submit" value="Logout">
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                </form>
-            </div>
         </div>
     </div>
-</div>
 
-<!-- Bootstrap core JavaScript-->
-<%--<script src="resources/vendor/jquery/jquery.min.js"></script>
-<script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>--%>
-<script src="<c:url value="../../resources/vendor/jquery/jquery.min.js"/>"></script>
-<script src="<c:url value="../../resources/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
+    <!-- Bootstrap core JavaScript-->
+    <%--<script src="resources/vendor/jquery/jquery.min.js"></script>
+    <script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>--%>
+    <script src="<c:url value="../../resources/vendor/jquery/jquery.min.js"/>"></script>
+    <script src="<c:url value="../../resources/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
 
-<!-- Core plugin JavaScript-->
-<%--<script src="resources/vendor/jquery-easing/jquery.easing.min.js"></script>--%>
-<script src="<c:url value="../../resources/vendor/jquery-easing/jquery.easing.min.js"/>"></script>
-<!-- Custom scripts for all pages-->
-<%--<script src="resources/js/sb-admin-2.min.js"></script>--%>
-<script src="<c:url value="../../resources/js/sb-admin-2.min.js"/>"></script>
-<!-- Page level plugins -->
-<%--<script src="resources/vendor/chart.js/Chart.min.js"></script>--%>
-<script src="<c:url value="../../resources/vendor/chart.js/Chart.min.js"/>"></script>
-<!-- Page level custom scripts -->
-<%--<script src="resources/js/demo/chart-area-demo.js"></script>
-<script src="resources/js/demo/chart-pie-demo.js"></script>--%>
-<script src="<c:url value="../../resources/js/demo/chart-area-demo.js"/>"></script>
-<script src="<c:url value="../../resources/js/demo/chart-pie-demo.js"/>"></script>
+    <!-- Core plugin JavaScript-->
+    <%--<script src="resources/vendor/jquery-easing/jquery.easing.min.js"></script>--%>
+    <script src="<c:url value="../../resources/vendor/jquery-easing/jquery.easing.min.js"/>"></script>
+    <!-- Custom scripts for all pages-->
+    <%--<script src="resources/js/sb-admin-2.min.js"></script>--%>
+    <script src="<c:url value="../../resources/js/sb-admin-2.min.js"/>"></script>
+    <!-- Page level plugins -->
+    <%--<script src="resources/vendor/chart.js/Chart.min.js"></script>--%>
+    <script src="<c:url value="../../resources/vendor/chart.js/Chart.min.js"/>"></script>
+    <!-- Page level custom scripts -->
+    <%--<script src="resources/js/demo/chart-area-demo.js"></script>
+    <script src="resources/js/demo/chart-pie-demo.js"></script>--%>
+    <script src="<c:url value="../../resources/js/demo/chart-area-demo.js"/>"></script>
+    <script src="<c:url value="../../resources/js/demo/chart-pie-demo.js"/>"></script>
 </body>
 
 </html>

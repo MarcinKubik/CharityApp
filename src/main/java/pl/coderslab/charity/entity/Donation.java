@@ -46,7 +46,9 @@ public class Donation {
     private String pickUpComment;
     @NotNull
     private String phoneNumber;
-    private boolean delivered;
+    private boolean takenFromMe;
+    private LocalDate takenFromMeDate;
+    private LocalDate creationDate;
     @ManyToOne
     private User user;
 

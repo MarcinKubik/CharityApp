@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form"
+           uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Szczegóły donacji</title>
+    <title>Zmień status donacji</title>
 
     <!-- Custom fonts for this template-->
     <link href="../../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -391,39 +393,12 @@
 
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Szczegóły donacji</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Status donacji</h6>
                             </div>
                             <div class="card-body">
-                                <p>
-                                    Szczegóły daru
-                                </p>
-                                <p>
-                                    Lista kategori:
-                                <ul>
-                                <c:forEach items="${userDonation.categories}" var="category">
-                                    <li>${category.name}</li>
-                                </c:forEach>
-                                </ul>
-                                </p>
-                                <p>
-                                   Dla: <c:out value="${userDonation.institution.name}"/>
-                                </p>
-                                <p>
-                                    Data utworzenia wpisu: <c:out value="${userDonation.creationDate}"/>
-                                </p>
-                                <p>
-                                    Status daru:
-                                    <c:choose>
-                                        <c:when test="${userDonation.takenFromMeDate eq null}">
-                                            Nie odebrano
-                                            <a href="/users/giveDonation/${userDonation.id}">Oddaj</a>
-                                        </c:when>
-                                        <c:otherwise>
-                                            Odebrano dnia
-                                            <c:out value="${userDonation.takenFromMeDate}"/>
-                                        </c:otherwise>
-                                    </c:choose>
-                                </p>
+                              <form:form modelAttribute="donation" action="/users/giveDonation" method="post">
+                                  <form:checkbox path="takenFromMe" id="takenFromMe" />Oddaj
+                              </form:form>
                             </div>
 
                         </div>
@@ -500,6 +475,7 @@
     <script src="resources/js/demo/chart-pie-demo.js"></script>--%>
     <script src="<c:url value="../../resources/js/demo/chart-area-demo.js"/>"></script>
     <script src="<c:url value="../../resources/js/demo/chart-pie-demo.js"/>"></script>
+    <script src="<c:url value="../../resources/js/changeStatusDonationJS.js"/>"></script>
 </body>
 
 </html>

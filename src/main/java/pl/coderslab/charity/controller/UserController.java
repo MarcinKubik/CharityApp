@@ -170,4 +170,16 @@ public class UserController {
         model.addAttribute("userDonation", userDonation);
         return "donationDetails";
     }
+
+    @GetMapping("/giveDonation/{id}")
+    public String giveDonation(@PathVariable Long id, Model model){
+        Optional<Donation> optionalDonation = donationService.get(id);
+        Donation donation = optionalDonation.orElse(null);
+        if(donation == null){
+            return "problemDonation";
+        }
+
+        model.addAttribute("donation", donation);
+        return "changeStatusDonation";
+    }
 }

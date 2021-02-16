@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Lista moich donacji</title>
+    <title>Szczegóły donacji</title>
 
     <!-- Custom fonts for this template-->
     <link href="../../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -395,28 +395,33 @@
                             </div>
                             <div class="card-body">
                                 <p>
-                                    Posortuj według:
-                                    <a href="/users/sortDonationsByTakenNotTaken">Odebrane/nieodebrane</a>
-                                    <a href="/users/sortDonationsByTakenFromMeDate">Data odbioru</a>
-                                    <a href="/users/sortDonationsByCreationDate">Data utworzenia wpisu</a>
+                                    Szczegóły donacji
                                 </p>
-                                <c:forEach items="${userDonations}" var="donation">
-                                    <p>
-                                        Donacja dla ${donation.institution.name}
-
-                                        <c:choose>
-                                            <c:when test="${donation.takenFromMe eq true}">
-                                                Odebrano : TAK
-                                                Dnia: ${donation.takenFromMeDate}
-                                            </c:when>
-                                            <c:otherwise>
-                                                Odebrano : NIE
-                                            </c:otherwise>
-                                        </c:choose>
-                                        Data utworzenia wpisu: <c:out value="${donation.creationDate}"/>
-                                        <a href="/users/donationDetails/${donation.id}">Szczegóły</a>
-                                    </p>
+                                <p>
+                                    Lista kategori:
+                                <ul>
+                                <c:forEach items="${userDonation.categories}" var="category">
+                                    <li>${category.name}</li>
                                 </c:forEach>
+                                </ul>
+                                </p>
+                                <p>
+                                   Dla: <c:out value="${userDonation.institution.name}"/>
+                                </p>
+                                <p>
+                                    Data utworzenia wpisu: <c:out value="${userDonation.creationDate}"/>
+                                </p>
+                                <p>
+                                    Data przekazania daru:
+                                    <c:choose>
+                                        <c:when test="${userDonation.takenFromMeDate eq null}">
+                                            Nie odebrano
+                                        </c:when>
+                                        <c:otherwise>
+                                            <c:out value="${userDonation.takenFromMeDate}"/>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </p>
                             </div>
 
                         </div>

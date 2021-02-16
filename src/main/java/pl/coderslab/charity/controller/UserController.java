@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Controller
-@RequestMapping("/users/user")
+@RequestMapping("/users")
 public class UserController {
 
     private final UserService userService;
@@ -157,5 +157,17 @@ public class UserController {
         List<Donation> sortedByCreationDate = donationService.findAllSortedByCreationDateDesc(currentUser.getUser());
         model.addAttribute("userDonations", sortedByCreationDate);
         return "userDonations";
+    }
+
+    @GetMapping("/donationDetails/{id}")
+    public String donationDetails(@PathVariable Long id, Model model){
+        Optional<Donation> optionalDonation = donationService.get(id);
+        Donation userDonation = optionalDonation.orElse(null);
+        if(userDonation == null){
+            return "problemDonation";
+        }
+
+        model.addAttribute("userDonation", userDonation);
+        return "donationDetails";
     }
 }

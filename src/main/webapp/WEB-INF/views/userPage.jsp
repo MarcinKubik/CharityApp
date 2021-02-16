@@ -68,8 +68,8 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Operacje:</h6>
-                    <a class="collapse-item" href="/users/user/edit">Edytuj dane</a>
-                    <a class="collapse-item" href="/users/user/editPassword">Edytuj hasło</a>
+                    <a class="collapse-item" href="/users/edit">Edytuj dane</a>
+                    <a class="collapse-item" href="/users/editPassword">Edytuj hasło</a>
                 </div>
             </div>
         </li>
@@ -85,7 +85,7 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Operacje:</h6>
-                    <a class="collapse-item" href="/users/user/sortDonationsByTakenNotTaken">Lista darów</a>
+                    <a class="collapse-item" href="/users/sortDonationsByTakenNotTaken">Lista darów</a>
                 </div>
             </div>
         </li>

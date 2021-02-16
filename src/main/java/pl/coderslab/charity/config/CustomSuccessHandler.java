@@ -25,7 +25,7 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         for(GrantedAuthority grantedAuthority : authorities){
             if(grantedAuthority.getAuthority().equals("ROLE_USER")){
-                redirectUrl = "/users/user/userPage";
+                redirectUrl = "/users/userPage";
                 break;
             }else if(grantedAuthority.getAuthority().equals("ROLE_ADMIN")){
                 redirectUrl = "/admins/sb-admin-2";

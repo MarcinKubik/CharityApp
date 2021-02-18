@@ -14,6 +14,8 @@ import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.UserService;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -181,5 +183,26 @@ public class UserController {
 
         model.addAttribute("donation", donation);
         return "changeStatusDonation";
+    }
+
+    @PostMapping("/giveDonation")
+    public String giveDonationProcess(@Valid Donation donation, BindingResult result){
+
+        System.out.println(donation.getTakenFromMeDateString());
+        if(donation.getTakenFromMeDateString() == null){
+            FieldError error  = new FieldError("donation", "takenFromMeDateString", "Nie wybrano daty");
+            result.addError(error);
+        }
+
+        if (result.hasErrors()){
+            return "changeStatusDonation";
+        }
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        donation.setTakenFromMeDate(LocalDate.parse(donation.getTakenFromMeDateString(), formatter));
+
+        donationService.update(donation);
+        return "redirect:/users/donationDetails/" + donation.getId();
     }
 }

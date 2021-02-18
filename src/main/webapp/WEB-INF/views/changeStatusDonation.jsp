@@ -397,7 +397,19 @@
                             </div>
                             <div class="card-body">
                               <form:form modelAttribute="donation" action="/users/giveDonation" method="post">
-                                  <form:checkbox path="takenFromMe" id="takenFromMe" />Oddaj
+                                  <form:hidden path="id"/>
+                                  <form:hidden path="pickUpComment"/>
+                                  <form:hidden path="institution"/>
+                                  <form:hidden path="phoneNumber"/>
+                                  <form:hidden path="pickUpDate"/>
+                                  <form:hidden path="zipCode"/>
+                                  <form:hidden path="city"/>
+                                  <form:hidden path="quantity"/>
+                                  <form:hidden path="street"/>
+                                  <form:hidden path="pickUpTime"/>
+                                  <form:checkbox path="takenFromMe" id="takenFromMe"/>
+                                  <form:label path="takenFromMe">Oddaj</form:label>
+
                               </form:form>
                             </div>
 

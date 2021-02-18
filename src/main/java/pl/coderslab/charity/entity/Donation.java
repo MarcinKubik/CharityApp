@@ -48,6 +48,8 @@ public class Donation {
     private String phoneNumber;
     private boolean takenFromMe;
     private LocalDate takenFromMeDate;
+    @Transient
+    private String takenFromMeDateString;
     private LocalDate creationDate;
     @ManyToOne
     private User user;

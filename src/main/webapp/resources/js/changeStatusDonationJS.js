@@ -1,21 +1,48 @@
-let formTakenFromMe = document.getElementById("takenFromMe");
+let takenFromMeCheckbox = document.getElementById("takenFromMe");
 
-formTakenFromMe.addEventListener("change", function (){
-    console.log(formTakenFromMe.checked);
-    if(formTakenFromMe.checked){
+takenFromMeCheckbox.addEventListener("change", function (){
+    console.log(takenFromMeCheckbox.checked);
+    if(takenFromMeCheckbox.checked){
+
+        let givingDateLabel = document.createElement("label");
+        givingDateLabel.setAttribute("id", "givingDateLabelId");
+        givingDateLabel.setAttribute("for", "givingDateId");
+        givingDateLabel.innerText = "Podaj datę";
+
         let givingDate = document.createElement("input");
         givingDate.setAttribute("type", "date");
-        givingDate.setAttribute("path", "takenFromMeDate");
+        givingDate.setAttribute("path", "takenFromMeDateString");
+        givingDate.setAttribute("id", "givingDateId");
+
+        let submit = document.createElement("button");
+        submit.setAttribute("type", "submit");
+        submit.classList.add("btn-facebook");
+        submit.innerText = "Zatwierdź oddanie daru";
+        submit.setAttribute("id", "submitId");
+
         let newLine = document.createElement("br");
-        formTakenFromMe.parentElement.insertBefore(newLine, formTakenFromMe.parentElement.children[1]);
-        formTakenFromMe.parentElement.insertBefore(givingDate, formTakenFromMe.parentElement.children[2]);
+
+        takenFromMeCheckbox.parentElement.insertBefore(newLine, takenFromMeCheckbox.parentElement.children[13]);
+        takenFromMeCheckbox.parentElement.insertBefore(givingDateLabel, takenFromMeCheckbox.parentElement.children[14]);
+        takenFromMeCheckbox.parentElement.insertBefore(givingDate, takenFromMeCheckbox.parentElement.children[15]);
+        takenFromMeCheckbox.parentElement.appendChild(submit);
+        console.log(givingDate);
     }
-    if(!formTakenFromMe.checked){
-        if (formTakenFromMe.parentElement.children.length === 5){
-            formTakenFromMe.parentElement.children[1].parentElement.removeChild(formTakenFromMe.parentElement.children[1]);
-            formTakenFromMe.parentElement.children[1].parentElement.removeChild(formTakenFromMe.parentElement.children[1]);
+    if(!takenFromMeCheckbox.checked){
+
+        if (takenFromMeCheckbox.parentElement.children.length === 18){
+            let givingDate = document.getElementById("givingDateId");
+            console.log(givingDate.value)
+            givingDate.parentElement.removeChild(givingDate);
+
+            let givingDateLabel = document.getElementById("givingDateLabelId");
+            givingDateLabel.parentElement.removeChild(givingDateLabel.previousElementSibling);
+            givingDateLabel.parentElement.removeChild(givingDateLabel);
+
+            let submit = document.getElementById("submitId");
+            submit.parentElement.removeChild(submit);
 
         }
-        console.log(formTakenFromMe.parentElement.children.length);
+        console.log(takenFromMeCheckbox.parentElement.children.length);
     }
 });

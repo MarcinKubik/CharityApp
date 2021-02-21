@@ -18,6 +18,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -189,12 +190,13 @@ public class UserController {
     public String giveDonationProcess(@Valid Donation donation, BindingResult result){
 
         System.out.println(donation.getTakenFromMeDateString());
-        if(donation.getTakenFromMeDateString() == null){
+        if("".equals(donation.getTakenFromMeDateString())){
             FieldError error  = new FieldError("donation", "takenFromMeDateString", "Nie wybrano daty");
             result.addError(error);
         }
 
         if (result.hasErrors()){
+            donation.setTakenFromMe(false);
             return "changeStatusDonation";
         }
 

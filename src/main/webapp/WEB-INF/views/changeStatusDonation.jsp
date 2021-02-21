@@ -397,6 +397,7 @@
                             </div>
                             <div class="card-body">
                               <form:form modelAttribute="donation" action="/users/giveDonation" method="post">
+                                  <form:hidden path="user"/>
                                   <form:hidden path="id"/>
                                   <form:hidden path="pickUpComment"/>
                                   <form:hidden path="institution"/>
@@ -408,7 +409,10 @@
                                   <form:hidden path="street"/>
                                   <form:hidden path="pickUpTime"/>
                                   <form:checkbox path="takenFromMe" id="takenFromMe"/>
-                                  <form:label path="takenFromMe">Oddaj</form:label>
+                                  <form:label path="takenFromMe">Oddaj</form:label><br>
+                                  <form:input path="takenFromMeDateString" type="date"/>
+                                  <form:label path="takenFromMeDateString">Podaj datę</form:label>
+                                  <form:errors path="takenFromMeDateString"/><br>
 
                               </form:form>
                             </div>

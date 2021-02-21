@@ -14,7 +14,7 @@ takenFromMeCheckbox.addEventListener("change", function (){
     }
     if(!takenFromMeCheckbox.checked){
 
-        if (takenFromMeCheckbox.parentElement.children.length === 20 || takenFromMeCheckbox.parentElement.children.length === 21){ // with fielderror or without
+        if (takenFromMeCheckbox.parentElement.children.length === 22 || takenFromMeCheckbox.parentElement.children.length === 23){ // with fielderror or without
 
             let submit = document.getElementById("submitId");
             submit.parentElement.removeChild(submit);

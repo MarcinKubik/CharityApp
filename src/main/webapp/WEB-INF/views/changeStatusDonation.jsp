@@ -399,6 +399,8 @@
                               <form:form modelAttribute="donation" action="/users/giveDonation" method="post">
                                   <form:hidden path="user"/>
                                   <form:hidden path="id"/>
+                                  <form:hidden path="categories"/>
+                                  <form:hidden path="creationDate"/>
                                   <form:hidden path="pickUpComment"/>
                                   <form:hidden path="institution"/>
                                   <form:hidden path="phoneNumber"/>

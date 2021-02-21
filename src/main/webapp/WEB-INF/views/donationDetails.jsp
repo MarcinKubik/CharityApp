@@ -409,6 +409,9 @@
                                    Dla: <c:out value="${userDonation.institution.name}"/>
                                 </p>
                                 <p>
+                                    Ilość worków: <c:out value="${userDonation.quantity}"/>
+                                </p>
+                                <p>
                                     Data utworzenia wpisu: <c:out value="${userDonation.creationDate}"/>
                                 </p>
                                 <p>

@@ -1,28 +1,23 @@
 package pl.coderslab.charity;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import pl.coderslab.charity.interfaces.EmailService;
+import pl.coderslab.charity.service.EmailServiceImpl;
 
 @Controller
 public class TestController {
 
-   /* @GetMapping("/form")
-    public String form(){
-        return "form";
-    }
+    @Autowired
+    public EmailService emailService;
 
-    @GetMapping("/formConfirmation")
-    public String formConfirmation(){
-        return "form-confirmation";
-    }
 
-    @GetMapping("/login")
-    public String login(){
-        return "login";
-    }
+   /* @GetMapping("/sendMail")
+        public String sendMail(){
+            emailService.sendSimpleMessage("kubikmmarcin@gmail.com",
+                    "subject", "text");
+            return "index";
+        }*/
 
-    @GetMapping("/register")
-    public String register(){
-        return "register";
-    }*/
 }

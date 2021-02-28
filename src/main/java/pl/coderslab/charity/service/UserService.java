@@ -40,7 +40,7 @@ public class UserService implements UserServiceInterface {
     @Override
     public void saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setEnabled(1);
+        user.setEnabled(0);
         Role userRole = roleRepository.findByName("ROLE_USER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
@@ -52,6 +52,11 @@ public class UserService implements UserServiceInterface {
         user.setEnabled(1);
         Role userRole = roleRepository.findByName("ROLE_ADMIN");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        userRepository.save(user);
+    }
+
+    public void unblock(User user){
+        user.setEnabled(1);
         userRepository.save(user);
     }
 

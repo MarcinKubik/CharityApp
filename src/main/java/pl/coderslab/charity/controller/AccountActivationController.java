@@ -5,15 +5,19 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.interfaces.EmailService;
 
+
+
 @Controller
-public class MailController {
+@RequestMapping("/account")
+public class AccountActivationController {
 
     @Autowired
     public EmailService emailService;
 
-    @GetMapping("/sendMail")
+    @GetMapping("/sendNotification")
     public String sendMail(){
         emailService.sendSimpleMessage("mail@gmail.com",
                 "subject", "text");

@@ -33,6 +33,8 @@ public class User {
     @NotBlank
     @Pattern(regexp = "\\S{8,}", message = "Hasło musi zawierać co najmniej 8 znaków")
     private String password;
+
+    private String token;
     @Transient
     @Pattern(regexp = "\\S{8,}", message = "Hasło musi zawierać co najmniej 8 znaków")
     private String password2;

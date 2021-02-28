@@ -10,7 +10,7 @@ import pl.coderslab.charity.interfaces.EmailService;
 @Component
 public class EmailServiceImpl implements EmailService {
 
-    private static final String NOREPLY_ADDRESS = "mail@gmail.com";
+   // private static final String NOREPLY_ADDRESS = "mail@gmail.com";
     @Autowired
     private JavaMailSender emailSender;
 
@@ -19,7 +19,7 @@ public class EmailServiceImpl implements EmailService {
         try {
 
             SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom(NOREPLY_ADDRESS);
+
             message.setTo(to);
             message.setSubject(subject);
             message.setText(text);

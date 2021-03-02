@@ -30,10 +30,11 @@ in good condition, to institutions which are responsible for passed this stuff t
 - Operations on admins: creating, reading, updating, deleting
 - Operations on users: creating, reading, updating, deleting
 - Edition of user's profile
-
+- Management of user's donations(list, details, sorting by specific criteria)
+- Activation user's account after sending email with unique token
 ## Tasks in progress:
 
-- Management of user's donations(list, details, sorting by specific criteria)
+- Reset of forgotten password
 
 
 ## Configuration

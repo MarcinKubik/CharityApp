@@ -53,10 +53,8 @@ public class RegisterController {
 
         UUID uuid = UUID.randomUUID();
         user.setToken(uuid.toString());
-        emailService.sendSimpleMessage(user.getEmail(), "Rejestracja w Charity App",
-                "Witaj" + user.getFullName() + "<br>" + "Potwierdź aktywację konta klikając w poniższy link " + "<br>"
-                        + "<a href=/confirmAccountActivation/" + user.getEmail() + "/" + user.getToken()
-                        + ">Potwierdź</a>");
+        emailService.sendSimpleMessage(user.getEmail(), "Rejestracja w Charity App", "Witaj " + user.getFullName() + ". Potwierdź aktywację konta klikając w link "
+        + "http://localhost:8080/confirmAccountActivation/" + user.getEmail() + "/" + user.getToken());
         userService.saveUser(user);
         return "index";
     }

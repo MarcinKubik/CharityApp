@@ -19,9 +19,10 @@
 
 <section class="login-page">
     <h2>Podaj adres email na który zostanie wysłany link resetujący stare hasło</h2>
-    <form:form method="post" action="/findMail">
+    <form:form method="post" action="/findMail" modelAttribute="user">
         <div class="form-group">
-            <form:input type="email" name="email" placeholder="Email"  path="user"/>
+            <form:input type="email" name="email" placeholder="Email"  path="email"/>
+            <form:errors path="email"/>
         </div>
         <div class="form-group form-group--buttons">
             <button type="submit" class="btn btn--without-border">Wyślij link</button>

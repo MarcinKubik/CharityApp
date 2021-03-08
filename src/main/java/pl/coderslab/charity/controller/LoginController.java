@@ -33,6 +33,7 @@ public class LoginController {
         if ("".equals(user.getEmail())){
             FieldError error = new FieldError("user", "email", "Podaj adres email");
             bindingResult.addError(error);
+            return "forgottenPasswordForm";
         }
 
         User userFromDatabase = userService.findByEmail(user.getEmail());
@@ -41,11 +42,12 @@ public class LoginController {
             FieldError error = new FieldError("user", "email",
                     "Podany adres email nie istnieje w bazie danych");
             bindingResult.addError(error);
-        }
-
-        if (bindingResult.hasErrors()){
             return "forgottenPasswordForm";
         }
+
+      /*  if (bindingResult.hasErrors()){
+            return "forgottenPasswordForm";
+        }*/
 
         return "index";
 

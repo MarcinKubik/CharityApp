@@ -56,6 +56,7 @@ public class RegisterController {
         emailService.sendSimpleMessage(user.getEmail(), "Rejestracja w Charity App", "Witaj " + user.getFullName() + ". Potwierdź aktywację konta klikając w link "
         + "http://localhost:8080/confirmAccountActivation/" + user.getEmail() + "/" + user.getToken());
         userService.saveUser(user);
+
         return "index";
     }
 
@@ -67,6 +68,8 @@ public class RegisterController {
         }
 
         if (user.getToken().equals(token)) {
+            UUID uuid = UUID.randomUUID();
+            user.setToken(uuid.toString()); // setting random token to disable user activation account after blocking by admin
             userService.unblock(user);
         }
         return "index";

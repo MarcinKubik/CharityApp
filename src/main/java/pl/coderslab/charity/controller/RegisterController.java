@@ -18,12 +18,19 @@ import pl.coderslab.charity.service.UserService;
 import javax.validation.Valid;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Controller
 public class RegisterController {
 
     private final UserService userService;
     private final BCryptPasswordEncoder passwordEncoder;
+
+    private static final String UPPER_CASE_REGEX = "[A-Z]+";
+    private static final String LOWER_CASE_REGEX = "[a-z]+";
+    private static final String DIGIT_REGEX = "[0-9]+";
+    private static final String SPECIAL_CHARACTER_REGEX = "\\W+";
 
     @Autowired
     public EmailService emailService;
@@ -43,6 +50,26 @@ public class RegisterController {
     public String processRegisterForm(@Valid User user, BindingResult result) {
         if (userService.existsByEmail(user.getEmail())) {
             result.rejectValue("email", "Email już istnieje w bazie danych", "Email już istnieje w bazie danych");
+        }
+        Pattern upperCasePattern = Pattern.compile(UPPER_CASE_REGEX);
+        Matcher upperCaseMatcher = upperCasePattern.matcher(user.getPassword());
+        if(!upperCaseMatcher.find()){
+            result.rejectValue("password", "Hasło musi zawierać co najmniej jedną wielką literę", "Hasło musi zawierać co najmniej jedną wielką literę");
+        }
+        Pattern lowerCasePattern = Pattern.compile(LOWER_CASE_REGEX);
+        Matcher lowerCaseMatcher = lowerCasePattern.matcher(user.getPassword());
+        if(!lowerCaseMatcher.find()){
+            result.rejectValue("password", "Hasło musi zawierać co najmniej jedną małą literę", "Hasło musi zawierać co najmniej jedną małą literę");
+        }
+        Pattern digitPattern = Pattern.compile(DIGIT_REGEX);
+        Matcher digitMatcher = digitPattern.matcher(user.getPassword());
+        if(!digitMatcher.find()){
+            result.rejectValue("password", "Hasło musi zawierać co najmniej jedną cyfrę", "Hasło musi zawierać co najmniej jedną cyfrę");
+        }
+        Pattern specialCharacterPattern = Pattern.compile(SPECIAL_CHARACTER_REGEX);
+        Matcher specialCharacterMatcher = specialCharacterPattern.matcher(user.getPassword());
+        if(!specialCharacterMatcher.find()){
+            result.rejectValue("password", "Hasło musi zawierać co najmniej jeden znak specjalny", "Hasło musi zawierać co najmniej jeden znak specjalny");
         }
         if (user.getPassword2() != null && !user.getPassword2().equals(user.getPassword())) {
             result.rejectValue("password2", "Hasła nie są takie same", "Hasła nie są takie same");

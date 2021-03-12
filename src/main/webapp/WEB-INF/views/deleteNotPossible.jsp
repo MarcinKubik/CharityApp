@@ -9,7 +9,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Problem z danymi fundacji</title>
+    <title>Problem z usunięciem administratora</title>
     <%--<link rel="stylesheet" href="css/style.css" />--%>
     <link rel="stylesheet" href="../../resources/css/style.css" />
 </head>
@@ -18,8 +18,8 @@
 <%@include file="header.jsp"%>
 
 <section class="login-page">
-    <h2>Problem z danymi fundacji</h2>
-    <a href="/admins/sb-admin-2" class="btn btn--without-border">Powrót na stronę użytkownika</a>
+    <h2>Nie możesz usunąć samego siebie</h2>
+    <a href="/admins/list" class="btn btn--without-border">OK</a>
 </section>
 
 <footer>

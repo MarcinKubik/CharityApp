@@ -159,13 +159,15 @@ public class AdminController {
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable Long id){
+    public String delete(@PathVariable Long id, @AuthenticationPrincipal CurrentUser customUser){
         Optional<User> optionalUser = userService.get(id);
         User admin = optionalUser.orElse(null);
         if(admin == null){
             return "problemAdmin";
         }
-
+        if(admin.getId().equals(customUser.getUser().getId())){
+            return "deleteNotPossible";
+        }
         userService.delete(id);
         return "redirect:/admins/list";
     }

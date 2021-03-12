@@ -18,7 +18,7 @@
 <%@include file="header.jsp"%>
 
 <section class="login-page">
-    <h2>Podaj adres email na który zostanie wysłany link resetujący stare hasło</h2>
+    <h2>Podaj nowe hasło</h2>
     <form:form method="post"  modelAttribute="userToEditPassword">
         <form:hidden path="id"/>
         <form:hidden path="name"/>

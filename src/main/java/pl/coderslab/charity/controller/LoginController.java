@@ -55,6 +55,7 @@ public class LoginController {
 
         UUID uuid = UUID.randomUUID();
         userFromDatabase.setToken(uuid.toString());
+        userService.editUser(userFromDatabase);
         emailService.sendSimpleMessage(userFromDatabase.getEmail(), "Resetowanie hasła", "Witaj " + userFromDatabase.getFullName()
                 + ". Kliknij w link aby zresetować hasło "
                 + "http://localhost:8080/resetPassword/" + userFromDatabase.getEmail() + "/" + userFromDatabase.getToken());

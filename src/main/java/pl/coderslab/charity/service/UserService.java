@@ -100,8 +100,8 @@ public class UserService implements UserServiceInterface {
         admin.setName("Marcin");
         admin.setSurname("Kubik");
         admin.setEnabled(1);
-        admin.setEmail("marcin@gmail.com");
-        admin.setPassword(passwordEncoder.encode("haslomarcin"));
+        admin.setEmail("kubikmmarcin@gmail.com");
+        admin.setPassword(passwordEncoder.encode("hasloMarcin1/"));
         admin.setPassword2("haslomarcin");
         Role adminRole = roleRepository.findByName("ROLE_ADMIN");
         admin.setRoles(new HashSet<Role>(Arrays.asList(adminRole)));

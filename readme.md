@@ -32,9 +32,12 @@ in good condition, to institutions which are responsible for passed this stuff t
 - Edition of user's profile
 - Management of user's donations(list, details, sorting by specific criteria)
 - Activation user's account after sending email with unique token
+- Reset of forgotten password
+- Protection against self removal by admin
+
 ## Tasks in progress:
 
-- Reset of forgotten password
+- All tasks done
 
 
 ## Configuration
